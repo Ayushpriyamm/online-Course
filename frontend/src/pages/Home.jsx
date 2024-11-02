@@ -2,6 +2,7 @@ import React from "react";
 import { head, thIm } from "../assests";
 import Button from "../compoents/Button";
 import { Link } from "react-router-dom";
+import { TypeAnimation } from "react-type-animation";
 
 function Home() {
   return (
@@ -32,7 +33,26 @@ function Home() {
           </div>
           <div className="w-[297px] h-[42px] sm:w-[941px] px-2 sm:h-[24px]">
             <p className="text center font-medium text-[14px] leading-[21px] sm:text-[16px] sm:leading-[24px] pt-2">
-              Learn from Industry Experts and Enhance your Skills
+              <TypeAnimation
+                sequence={[
+                  "Learn from Industry Experts and Enhance your Knowledge",
+                  1500,
+                  "Learn from Industry Experts and Boost your Career",
+                  1500,
+                  "Learn from Industry Experts and Transform your Future",
+                  1500,
+                  "Learn from Industry Experts and Elevate your Potential",
+                  1500,
+                  "Learn from Industry Experts and Refine your Abilities",
+                  1500,
+                  "Learn from Industry Experts and Broaden your Perspective",
+                  1500,
+                  "Learn from Industry Experts and Expand your Horizons",
+                  1500,
+                ]}
+                speed={50}
+                repeat={Infinity}
+              />
             </p>
           </div>
         </div>
