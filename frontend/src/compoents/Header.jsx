@@ -12,10 +12,11 @@ function Header() {
   };
   return (
     <>
+      <Link to="/courses">
       <div className="w-[95%] sm:w-[98%] mx-auto mt-5 text-center py-3 rounded-lg bg-orange-500 text-white cursor-pointer">
         <span className="mx-2">Free Courses🌟 Sale Ends Soon,Get It Now </span>
         <FontAwesomeIcon icon={faArrowRight} />
-      </div>
+      </div></Link>
       <header className="w-[95%] sm:w-[90%] rounded-md mx-auto my-5 py-5 flex border-b-[1px] border-b-gray-300 items-center justify-between bg-white">
         <div className="mx-2 flex gap-10">
           <Link to="/">
@@ -87,13 +88,13 @@ function Header() {
             className=" inline pr-2 cursor-pointer custom:hidden"
             onClick={handleDropDown}
           >
-            <img src={drop} className="w-8" alt="" />
+            <img src={drop} className="w-8  "/>
           </div>
         </div>
       </header>
       {isOpen && (
          <div
-         className={`fixed inset-0 bg-black bg-opacity-30 transition-opacity duration-300 ${
+         className={`fixed inset-0 z-50 bg-black bg-opacity-30 transition-opacity duration-300 ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
          onClick={handleDropDown}

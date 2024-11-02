@@ -5,11 +5,12 @@ import Button from "../compoents/Button";
 function Home() {
   return (
     <div className=" flex flex-col items-center my-[100px] mx-auto w-[357px] h-[311px] top-[204px] left-[17px] gap-[50px] sm:max-w-[941px] sm:h-[265px] sm:top-[232px] sm:left-[266px] sm:gap-[50px]">
-      
-
       <div className="relative w-[357px] h-[212px] sm:h-[166px] sm:w-[941px] gap-[16px] flex flex-col">
-
-      <img src={thIm} alt="" className=" absolute z-[10] left-[-10px] top-[-13px] sm:left-[133px] sm:top-[-13px]"/>
+        <img
+          src={thIm}
+          alt=""
+          className=" absolute z-[10] left-[-10px] top-[-13px] sm:left-[133px] sm:top-[-13px]"
+        />
 
         <div className="flex pl-3 rounded-md items-center w-[357px] h-[76px] sm:w-[643px] sm:h-[78px] gap-[14px] bg-white mx-auto">
           <div>
@@ -36,8 +37,12 @@ function Home() {
         </div>
       </div>
       <div className=" items-center flex justify-between gap-x-4 sm:w-[297px] sm:h-[48px]">
-        <Button text={"Explore Courses"} orange />
-        <Button text={"View Pricing"} />
+        <Link to="/courses">
+          <Button text={"Explore Courses"} orange />
+        </Link>
+        <Link to="/pricing">
+          <Button text={"View Pricing"} />
+        </Link>
       </div>
     </div>
   );
