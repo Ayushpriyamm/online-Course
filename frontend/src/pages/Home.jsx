@@ -1,6 +1,7 @@
 import React from "react";
 import { head, thIm } from "../assests";
 import Button from "../compoents/Button";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
