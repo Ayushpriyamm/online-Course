@@ -50,7 +50,7 @@ function Home() {
                   "Learn from Industry Experts and Expand your Horizons",
                   1500,
                 ]}
-                speed={50}
+                speed={40}
                 repeat={Infinity}
               />
             </p>
