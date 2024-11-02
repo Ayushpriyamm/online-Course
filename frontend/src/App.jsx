@@ -10,9 +10,9 @@ import Layout from "./Layout";
 import About from "./pages/About";
 import Courses from "./pages/Courses";
 import Contact from "./pages/Contact";
-import Login from "./compoents/Login";
-import SignUp from "./compoents/SignUp";
 import Pricing from "./pages/Pricing";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(

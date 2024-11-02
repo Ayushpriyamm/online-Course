@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
-import { drop } from "../assests";
+import { drop, logo } from "../assests";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -19,10 +19,10 @@ function Header() {
       <header className="w-[95%] sm:w-[90%] rounded-md mx-auto my-5 py-5 flex border-b-[1px] border-b-gray-300 items-center justify-between bg-white">
         <div className="mx-2 flex gap-10">
           <Link to="/">
-            <img src="" alt="logo" />
+            <img src={logo} alt="logo" />
           </Link>
           <div className="">
-            <ul className="flex flex-col items-center sm:flex-row lg:space-x-4 text-sm md:text-base">
+            <ul className="flex flex-col items-center my-3 sm:flex-row lg:space-x-4 text-sm md:text-base">
               <li className="hidden custom:block">
                 <NavLink
                   to="/"

@@ -5,7 +5,7 @@ import {
   faLocationDot,
   faPhone
 } from "@fortawesome/free-solid-svg-icons";
-import { fbIm, lnIm } from "../assests";
+import { fbIm, lnIm, logo } from "../assests";
 
 function Footer() {
   return (
@@ -15,7 +15,7 @@ function Footer() {
 
     <div className="mt-5 pt-6">
       <div className="mb-5">
-        <img src="" alt="logo" />
+        <img src={logo} alt="logo" />
       </div>
       <div className="flex flex-col gap-y-3 text-lg text-gray-700">
         <p>
