@@ -6,15 +6,18 @@ import {
   faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import { fbIm, lnIm, logo } from "../assests";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
     <>
       <footer className="bg-white">
-        <div className="flex flex-col sm:flex-row bg-white px-10 py-5 sm:justify-around">
-          <div className="mt-5 pt-6">
+        <div className="flex flex-col sm:flex-row bg-white px-10 py-5 sm:justify-around gap-5 sm:gap-2 ">
+          <div className=" pt-6">
             <div className="mb-5">
-              <img src={logo} alt="logo" />
+              <Link to="/">
+                <img src={logo} alt="logo" />
+              </Link>
             </div>
             <div className="flex flex-col gap-y-3 text-lg text-gray-700">
               <p>
