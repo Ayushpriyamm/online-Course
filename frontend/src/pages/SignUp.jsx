@@ -16,7 +16,7 @@ function SignUp() {
 
       {/*TESTIMONIALS PAGE*/}
       <div className="w-full min-w-[24rem] max-w-[60%] custom:w-[32rem] max-lg:w-[649px] flex flex-col order-1 custom:order-0 mx-auto self-stretch items-end gap-y-[40px] w-inherit h-[510px] sm:gap-y-[60px] sm:my-auto  sm:h-[509px]">
-        <div className="flex flex-col items-center flex-none order-0 self-stretch flex-grow-0 w-inherit h-[155px] sm:h-[121px] p-0 gap-1">
+        <div className="flex flex-col items-center flex-none order-0 self-stretch flex-grow-0 w-inherit h-[155px] sm:h-[121px] p-0 gap-1 mb-6 max-lg:mb-0">
           <h1 className="w-inherit h-[45px] flex-none order-0 self-stretch flex-grow-0 font-bold text-[30px] leading-[150%] ">
             Students Testimonials
           </h1>
@@ -63,7 +63,7 @@ function SignUp() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row justify-center sm:justify-end items-center w-inherit h-[54px] flex-none order-1 sm:mt-4 max-lg:mt-0 self-stretch flex-grow-0">
+          <div className="flex flex-row justify-center custom:justify-end items-center w-inherit h-[54px] flex-none order-1 sm:mt-4 max-lg:mt-0 self-stretch flex-grow-0">
             <div className="flex flex-row items-center gap-[10px]">
               <img src={left} className="cursor-pointer" />
               <img src={right} className="cursor-pointer" />
@@ -73,7 +73,7 @@ function SignUp() {
       </div>
 
       {/* SIGNUP PAGE*/}
-      <div className="w-full min-w-[24rem] max-w-[60%] mx-auto custom:w-[25rem] max-lg:w-[540px] flex  order-0 custom:order-1 flex-col flex-none  h-[786px] self-stretch items-start p-[30px] sm:p-[40px] gap-[30px] sm:h-[816px] bg-white rounded-[10px]">
+      <div className="w-full min-w-[24rem] max-w-[65%] mx-auto custom:w-[25rem] max-lg:w-[540px] flex  order-0 custom:order-1 flex-col flex-none  h-[786px] self-stretch items-start p-[30px] sm:p-[40px] gap-[30px] sm:h-[816px] bg-white rounded-[10px]">
         <div className="flex flex-col justify-center items-center w-full h-[79px] self-stretch sm:h-[76px] gap-2 order-0">
           <h1 className="w-inherit h-[35px] sm:h-[48px] font-bold text-[28px] leading-[35px] sm:text-[38px] sm:leading-[48.07px] text-center self-stretch flex-grow-0 order-0">
             Sign Up
