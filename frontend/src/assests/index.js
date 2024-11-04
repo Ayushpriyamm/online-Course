@@ -10,6 +10,7 @@ import google from "../assests/google.svg"
 import upR from "../assests/upright.svg"
 import left from "../assests/leftToggle.svg"
 import right from "../assests/rightToggle.svg"
+import ggl from "../assests/google.png"
 
 
 
@@ -17,4 +18,4 @@ import right from "../assests/rightToggle.svg"
 
 
 
-export {fbIm, thIm, lnIm, drop, logo, head, google, eye, eyeN,upR, left, right}
+export {fbIm, thIm, lnIm, drop, logo, head, google, eye, eyeN,upR, left, right, ggl }
