@@ -35,7 +35,7 @@ function Home() {
             <p className="text center font-medium text-[14px] leading-[21px] sm:text-[16px] sm:leading-[24px] pt-2">
               <TypeAnimation
                 sequence={[
-                  "Learn from Industry Experts and Enhance your Knowledge",
+                  "Learn from Industry Experts and Enhance your Knowledge ",
                   1500,
                   "Learn from Industry Experts and Boost your Career",
                   1500,
