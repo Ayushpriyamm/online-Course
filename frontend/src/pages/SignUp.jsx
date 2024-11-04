@@ -141,7 +141,7 @@ function SignUp() {
                 id="remember"
                 className="w-[24px] h-[24px] rounded bg-[#F7F7F8]"
               />
-              <label htmlFor="remember">Remember Me</label>
+              <label htmlFor="terms">I agree <Link to="/" className="underline">Terms of Use</Link> and <Link to="/" className="underline">Privacy Policy</Link></label>
             </div>
             <div className=" self-stretch w-inherit sm:h-[49px] order-4">
               <Button text={"Login"} orange />
@@ -160,10 +160,10 @@ function SignUp() {
             <img src={google} className="cursor-pointer hover:shadow-md" />
           </div>
           <Link
-            to="/signup"
+            to="/login"
             className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center font-medium text-[18px] leading-[150%] self-stretch order-3"
           >
-            Don't have an account ? <span className="underline"> Sign Up </span>
+            Already have an account ? <span className="underline"> Login </span>
             <span>
               <img src={upR} />
             </span>
