@@ -9,7 +9,7 @@ function Login() {
     setSee(!see);
   };
   return (
-    <div className=" flex flex-col mx-auto mt-0 custom:mt-1 mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-7
+    <div className=" flex flex-col mx-1 sm:mx-auto mt-0 custom:mt-1 mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-7
     custom:gap-8 max-lg:gap-16 w-[85%] h-[1330px] sm:w-[95%] custom:w-[90%] custom:h-[710px] custom:flex-row ">
       {/*TESTIMONIALS PAGE*/}
       <div className="w-full min-w-[24rem] max-w-[60%] custom:w-[32rem] max-lg:w-[649px] flex flex-col order-1 custom:order-0 mx-auto self-stretch items-end gap-y-[40px] w-inherit h-[510px] sm:gap-y-[60px] sm:my-auto  sm:h-[509px]">

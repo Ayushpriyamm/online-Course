@@ -9,8 +9,8 @@ function SignUp() {
     setSee(!see);
   };
   return (
-    <div className=" flex flex-col mx-auto mt-0 custom:mt-[4rem] mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-y-7
-    custom:gap-8 max-lg:gap-16 w-[85%] h-[1380px] sm:w-[95%] custom:w-[90%] custom:h-[816px] custom:flex-row ">
+    <div className=" flex flex-col mx-1 sm:mx-auto mt-0 custom:mt-[4rem] mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-y-7
+    custom:gap-8 max-lg:gap-16 w-[85%] h-[1380px] sm:w-[95%] custom:w-[90%] custom:h-[816px] custom:flex-row">
 
 
 
