@@ -11,6 +11,13 @@ import upR from "../assests/upright.svg"
 import left from "../assests/leftToggle.svg"
 import right from "../assests/rightToggle.svg"
 import ggl from "../assests/google.png"
+import zapier from "../assests/c1.svg"
+import spotify from "../assests/c2.svg"
+import zoom from "../assests/c3.svg"
+import amazon from "../assests/c4.svg"
+import adobe from "../assests/c5.svg"
+import notion from "../assests/c6.svg"
+import netflix from "../assests/c7.svg"
 
 
 
@@ -18,4 +25,4 @@ import ggl from "../assests/google.png"
 
 
 
-export {fbIm, thIm, lnIm, drop, logo, head, google, eye, eyeN,upR, left, right, ggl }
+export {fbIm, thIm, lnIm, drop, logo, head, google, eye, eyeN,upR, left, right, ggl,zapier,spotify,zoom,amazon,adobe,notion,netflix}

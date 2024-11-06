@@ -17,6 +17,7 @@ function Header() {
         <span className="mx-2">Free Courses🌟 Sale Ends Soon,Get It Now </span>
         <FontAwesomeIcon icon={faArrowRight} />
       </div></Link>
+      
       <header className="w-[95%] sm:w-[90%] rounded-md mx-auto my-5 py-5 flex border-b-[1px] border-b-gray-300 items-center justify-between bg-white">
         <div className="mx-2 flex gap-10">
           <Link to="/">
