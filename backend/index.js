@@ -3,6 +3,8 @@ import express, { json } from 'express'
 import cors from 'cors'
 import { dbConfig } from './config/dbConfig.js';
 
+import authRoute from './src/routes/authRoute.js'
+
 
 dotenv.config();
 
@@ -23,6 +25,7 @@ app.use(express.json());
 dbConfig();
 
 //define Routes
+app.use('/api/v1/auth', authRoute);
 
 const PORT=process.env.PORT || 3000
 app.listen(PORT, () => {

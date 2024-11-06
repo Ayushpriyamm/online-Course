@@ -1,19 +1,61 @@
 import React, { useState } from "react";
+
 import Button from "../compoents/Button";
 import { eye, eyeN, google, left, right, upR } from "../assests";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({});
+  const [loading, setLoading] = useState(false);
   const [see, setSee] = useState(false);
   const handleSee = () => {
     setSee(!see);
   };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    console.log("Button clicked ");
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const res = await fetch("http://localhost:8000/api/v1/auth/signup", {
+        method: "POST",
+        headers: {
+          "content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      console.log(data);
+
+      if (data.success == false) {
+        alert("Sign-up failed. Please check your input.");
+        setLoading(false);
+        return;
+      } else {
+        alert("Sign-up successful!");
+        navigate("/courses");
+      }
+    } catch (error) {
+      console.error("Error during sign-up:", error);
+      setLoading(false);
+    }
+  };
   return (
-    <div className=" flex flex-col mx-auto mt-0 custom:mt-[4rem] mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-y-7
-    custom:gap-8 max-lg:gap-16 w-[85%] h-[1380px] sm:w-[95%] custom:w-[90%] custom:h-[816px] custom:flex-row ">
-
-
-
+    <div
+      className=" flex flex-col mx-auto mt-0 custom:mt-[4rem] mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-y-7
+    custom:gap-8 max-lg:gap-16 w-[85%] h-[1380px] sm:w-[95%] custom:w-[90%] custom:h-[816px] custom:flex-row "
+    >
       {/*TESTIMONIALS PAGE*/}
       <div className="w-full min-w-[24rem] max-w-[60%] custom:w-[32rem] max-lg:w-[649px] flex flex-col order-1 custom:order-0 mx-auto self-stretch items-end gap-y-[40px] w-inherit h-[510px] sm:gap-y-[60px] sm:my-auto  sm:h-[509px]">
         <div className="flex flex-col items-center flex-none order-0 self-stretch flex-grow-0 w-inherit h-[155px] sm:h-[121px] p-0 gap-1 mb-6 max-lg:mb-0">
@@ -83,7 +125,10 @@ function SignUp() {
           </p>
         </div>
 
-        <form className="flex flex-col gap-6 items-start w-inherit h-[550px] sm:h-[620px] self-stretch order-1">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-6 items-start w-inherit h-[550px] sm:h-[620px] self-stretch order-1"
+        >
           <div className="flex flex-col items-start gap-[20px] w-inherit h-[447px] sm:h-[537px] self-stretch order-0">
             <div className="flex flex-col items-start gap-[10px] w-inherit h-[92px] sm:h-[98px] self-stretch order-0">
               <label htmlFor="name" className="font-semibold">
@@ -93,10 +138,11 @@ function SignUp() {
                 className=" flex flex-row items-center px-[18px] py-[20px] sm:py-[30px] sm:px-[20px] border-[1px] border-solid border-[#F1F1F3] rounded-[8px]  sm:h-[48px] bg-[#FCFCFD] text-[#656567]
                 focus:outline-orange-200 focus:bg-orange-100
                 focus:text-black self-stretch"
-                type="name"
+                type="text"
                 name="name"
                 id="name"
                 placeholder="Enter your Name"
+                onChange={handleChange}
               />
             </div>
             <div className="flex flex-col items-start gap-[10px] w-inherit h-[92px] sm:h-[98px] self-stretch order-1">
@@ -111,6 +157,7 @@ function SignUp() {
                 name="email"
                 id="email"
                 placeholder="Enter your Email"
+                onChange={handleChange}
               />
             </div>
             <div className="flex flex-col items-start gap-[10px] w-inherit h-[123px] sm:h-[132px] self-stretch order-2">
@@ -124,6 +171,7 @@ function SignUp() {
                   name="password"
                   id="password"
                   placeholder="Enter your Password"
+                  onChange={handleChange}
                 />
                 <img
                   src={see ? eye : eyeN}
@@ -141,19 +189,28 @@ function SignUp() {
                 id="remember"
                 className="w-[24px] h-[24px] rounded bg-[#F7F7F8]"
               />
-              <label htmlFor="terms">I agree <Link to="/" className="underline">Terms of Use</Link> and <Link to="/" className="underline">Privacy Policy</Link></label>
+              <label htmlFor="terms">
+                I agree{" "}
+                <Link to="/" className="underline">
+                  Terms of Use
+                </Link>{" "}
+                and{" "}
+                <Link to="/" className="underline">
+                  Privacy Policy
+                </Link>
+              </label>
             </div>
             <div className=" self-stretch w-inherit sm:h-[49px] order-4">
-              <Button text={"Login"} orange />
+              <Button loading={loading} text={"Singup"} type="submit" orange />
             </div>
           </div>
 
-          <div class="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-auto self-stretch order-2">
-            <div class="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
-            <span class="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
+          <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-auto self-stretch order-2">
+            <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
+            <span className="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
               OR
             </span>
-            <div class="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
+            <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
           </div>
 
           <div className="w-inherit sm:h-[49px] order-2">

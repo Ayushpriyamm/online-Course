@@ -9,8 +9,10 @@ function Login() {
     setSee(!see);
   };
   return (
-    <div className=" flex flex-col mx-auto mt-0 custom:mt-1 mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-7
-    custom:gap-8 max-lg:gap-16 w-[85%] h-[1330px] sm:w-[95%] custom:w-[90%] custom:h-[710px] custom:flex-row ">
+    <div
+      className=" flex flex-col mx-auto mt-0 custom:mt-1 mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-7
+    custom:gap-8 max-lg:gap-16 w-[85%] h-[1330px] sm:w-[95%] custom:w-[90%] custom:h-[710px] custom:flex-row "
+    >
       {/*TESTIMONIALS PAGE*/}
       <div className="w-full min-w-[24rem] max-w-[60%] custom:w-[32rem] max-lg:w-[649px] flex flex-col order-1 custom:order-0 mx-auto self-stretch items-end gap-y-[40px] w-inherit h-[510px] sm:gap-y-[60px] sm:my-auto  sm:h-[509px]">
         <div className="flex flex-col items-center flex-none order-0 self-stretch flex-grow-0 w-inherit h-[155px] sm:h-[121px] p-0 gap-1 mb-6 max-lg:mb-0">
@@ -134,12 +136,12 @@ function Login() {
             </div>
           </div>
 
-          <div class="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-[21px] self-stretch">
-            <div class="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
-            <span class="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
+          <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-[21px] self-stretch">
+            <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
+            <span className="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
               OR
             </span>
-            <div class="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
+            <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
           </div>
 
           <div className="w-inherit sm:h-[49px]">
