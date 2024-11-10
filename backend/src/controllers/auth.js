@@ -20,7 +20,7 @@ export const signup = async(req,res) => {
         const newUser = await User.create({
             name,
             email,
-            hashedPassword,
+            password:hashedPassword,
         })
 
         const token = generateToken(newUser._id);
@@ -39,4 +39,45 @@ export const signup = async(req,res) => {
             message:"something went wrong ❌"
         })
     }
+}
+
+export const signin = async(req, res) => {
+    try {
+        const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({
+            message: "Both the feilds are required"
+        });
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+        return res.status(404).json({
+            message: "user not exist"
+        });
+    }
+
+    const isCompare = await bcrypt.compare(password, user.password);
+
+    if (!isCompare) {
+        return res.status(400).json({
+            message: "Incorrect Password"
+        })
+    }
+        
+        const token = generateToken(user._id);
+        
+        return res.status(200).json({
+            token,
+            message: "signin successfull",
+            user,
+        })
+    } catch (error) {
+        console.error("something went wrong ❌" ,error)
+        return res.status(500).json({
+            message:"something went wrong ❌"
+        })
+    }
+    
 }

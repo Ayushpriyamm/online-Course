@@ -1,12 +1,56 @@
 import React, { useState } from "react";
 import Button from "../compoents/Button";
 import { eye, eyeN, google, left, right, upR } from "../assests";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  const [formData, setFormData] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+  console.log(formData);
+
   const [see, setSee] = useState(false);
   const handleSee = () => {
     setSee(!see);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+
+      const res = await fetch("http://localhost:8000/api/v1/auth/signin", {
+        method: "POST",
+        headers: {
+          "content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      console.log("button clicked");
+      const data = await res.json();
+
+      if (data.success == false) {
+        alert("Signin Failed ,Please try again");
+        setLoading(false);
+        return;
+      } else {
+        alert('signin successfull,click "OK" to continue');
+        setLoading(false);
+        navigate("/courses");
+      }
+      console.log(data);
+    } catch (error) {
+      console.error("Error during sign-up:", error);
+      setLoading(false);
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
   };
   return (
     <div
@@ -82,7 +126,10 @@ function Login() {
           </p>
         </div>
 
-        <form className="flex flex-col gap-6 items-start w-inherit h-[518px] sm:h-[536px] self-stretch">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-6 items-start w-inherit h-[518px] sm:h-[536px] self-stretch"
+        >
           <div className="flex flex-col items-start gap-[20px] w-inherit h-[348px] sm:h-[363px] self-stretch">
             <div className="flex flex-col items-start gap-[10px] w-inherit h-[92px] sm:h-[98px] self-stretch">
               <label htmlFor="email" className="font-semibold">
@@ -96,6 +143,7 @@ function Login() {
                 name="email"
                 id="email"
                 placeholder="Enter your Email"
+                onChange={handleChange}
               />
             </div>
             <div className="flex flex-col items-start gap-[10px] w-inherit h-[123px] sm:h-[132px] self-stretch">
@@ -109,6 +157,7 @@ function Login() {
                   name="password"
                   id="password"
                   placeholder="Enter your Password"
+                  onChange={handleChange}
                 />
                 <img
                   src={see ? eye : eyeN}
@@ -132,7 +181,7 @@ function Login() {
               <label htmlFor="remember">Remember Me</label>
             </div>
             <div className=" self-stretch w-inherit sm:h-[49px]">
-              <Button text={"Login"} orange />
+              <Button loading={loading} text={"Login"} type="submit" orange />
             </div>
           </div>
 

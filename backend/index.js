@@ -27,6 +27,7 @@ dbConfig();
 //define Routes
 app.use('/api/v1/auth', authRoute);
 
+
 const PORT=process.env.PORT || 3000
 app.listen(PORT, () => {
     console.log(`server is running on Port ${PORT}✅ `)
