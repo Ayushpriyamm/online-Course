@@ -7,13 +7,19 @@ export const signup = async(req,res) => {
         const { name, email, password } = req.body;
         
         if (!name || !email || !password) {
-            return res.status(400).send("all the feilds are required ")            
+            return res.status(400).json({
+                success:false,
+                message: "all the feilds are required "
+            })           
         }
 
         const user = await User.findOne({ email });
 
         if (user) {
-            return res.status(400).json({message:"user already exist "})
+            return res.status(400).json({
+                success:false,
+                message: "user already exist "
+            })
         }
 
         const hashedPassword=await bcrypt.hash(password,10)
@@ -26,6 +32,7 @@ export const signup = async(req,res) => {
         const token = generateToken(newUser._id);
 
         return res.status(200).json({
+            success:true,
             message:"Signup sucesssfull✅   ",
             token,
             newUser,
@@ -36,6 +43,7 @@ export const signup = async(req,res) => {
     } catch (error) {
         console.error("something went wrong ❌" ,error)
         return res.status(500).json({
+            success:false,
             message:"something went wrong ❌"
         })
     }
@@ -47,6 +55,7 @@ export const signin = async(req, res) => {
 
     if (!email || !password) {
         return res.status(400).json({
+            success:false,
             message: "Both the feilds are required"
         });
     }
@@ -54,7 +63,8 @@ export const signin = async(req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
         return res.status(404).json({
-            message: "user not exist"
+            success:false,
+            message: "This user not exist,check your email !!"
         });
     }
 
@@ -62,6 +72,7 @@ export const signin = async(req, res) => {
 
     if (!isCompare) {
         return res.status(400).json({
+            success:false,
             message: "Incorrect Password"
         })
     }
@@ -69,6 +80,7 @@ export const signin = async(req, res) => {
         const token = generateToken(user._id);
         
         return res.status(200).json({
+            success:true,
             token,
             message: "signin successfull",
             user,

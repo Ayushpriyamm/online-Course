@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 function Login() {
   const [formData, setFormData] = useState({});
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  console.log(error);
 
   const navigate = useNavigate();
   console.log(formData);
@@ -31,15 +33,14 @@ function Login() {
       const data = await res.json();
 
       if (data.success == false) {
-        alert("Signin Failed ,Please try again");
+        setError(data.message);
         setLoading(false);
         return;
-      } else {
-        alert('signin successfull,click "OK" to continue');
-        setLoading(false);
-        navigate("/courses");
       }
-      console.log(data);
+
+      setError(null);
+      navigate("/courses");
+      setLoading(false);
     } catch (error) {
       console.error("Error during sign-up:", error);
       setLoading(false);
@@ -116,14 +117,15 @@ function Login() {
       </div>
 
       {/*LOGIN PAGE*/}
-      <div className="w-full min-w-[23.5rem] max-w-[65%] mx-auto custom:w-[25rem] max-lg:w-[540px] flex order-0 custom:order-1 flex-col flex-none  h-[687px] self-stretch items-start p-[30px] sm:p-[40px] gap-[30px] sm:h-[710px] bg-white rounded-[10px]">
+      <div className="w-full min-w-[23.5rem] max-w-[65%] mx-auto custom:w-[25rem] max-lg:w-[540px] flex order-0 custom:order-1 flex-col flex-none  h-[687px] self-stretch items-start p-[30px] sm:p-[40px] gap-[30px] sm:h-[710px] bg-white rounded-[10px] space-y-2">
         <div className="flex flex-col justify-center items-center w-full h-[79px] self-stretch sm:h-[76px] gap-2">
           <h1 className="w-inherit h-[35px] sm:h-[48px] font-bold text-[28px] leading-[35px] sm:text-[38px] sm:leading-[48.07px] text-center self-stretch flex-grow-0 order-0">
             Login
           </h1>
-          <p className=" w-inherit h-[20px] font-normal text-[14px] leading-[18px] sm:text-[16px] sm:leading-[20px] text-center order-1 self-stretch flex-grow-0">
+          <p className=" w-inherit h-[20px] font-normal text-[14px] leading-[18px] sm:text-[15px] sm:leading-[20px] text-center order-1 self-stretch flex-grow-0">
             Welcome back! Please log in to access your account.
           </p>
+          {error && <p className="text-red-500">{error}</p>}
         </div>
 
         <form
