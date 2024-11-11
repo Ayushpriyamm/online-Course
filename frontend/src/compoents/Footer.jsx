@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -9,6 +10,9 @@ import { fbIm, lnIm, logo } from "../assests";
 import { Link } from "react-router-dom";
 
 function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <>
       <footer className="bg-white">
@@ -32,7 +36,7 @@ function Footer() {
             </div>
           </div>
           <div className="pt-6 ">
-            <h2 className="font-bold text-xl pb-3 text-gray-800 ">Home</h2>
+            <h2 className="font-bold text-xl pb-3 text-gray-800 cursor-pointer" onClick={scrollToTop}>Home</h2>
             <ul className="list-none space-y-2 text-lg text-gray-600">
               <li className="hover:text-gray-800 cursor-pointer">Benefits</li>
               <li className="hover:text-gray-800 cursor-pointer">
@@ -46,7 +50,8 @@ function Footer() {
           </div>
 
           <div className="pt-6">
-            <h2 className="font-bold text-xl pb-3 text-gray-800">About Us</h2>
+            <Link to="/about">
+            <h2 className="font-bold text-xl pb-3 text-gray-800">About Us</h2></Link>
             <ul className="list-none space-y-2 text-lg text-gray-600">
               <li className="hover:text-gray-800 cursor-pointer">Company</li>
               <li className="hover:text-gray-800 cursor-pointer">

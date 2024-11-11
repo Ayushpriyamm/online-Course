@@ -3,6 +3,7 @@ import {
   adobe,
   amazon,
   head,
+  home,
   netflix,
   notion,
   spotify,
@@ -13,6 +14,7 @@ import {
 import Button from "../compoents/Button";
 import { Link } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
+import Benefits from "../compoents/Benefits";
 
 function Home() {
   return (
@@ -81,35 +83,40 @@ function Home() {
       </div>
 
       {/*Our Partners*/}
-<div className="flex flex-row items-start border border-solid border-[#F1F1F3] rounded-lg p-2 sm:p-6 bg-white w-[95%] sm:w-[90%] h-[84px] sm:h-[116px] mx-auto overflow-hidden">
-       
-       {/* Card */}
-       <div className="w-[112.33px] h-[64px] sm:w-[140px] custom:w-[160px] max-lg:w-[175.86px] sm:h-[68px]
-        justify-center items-center px-7.5 py-5 flex-1 order-0 flex-grow gap-x-7 flex">
+      <div className="flex flex-row items-start border border-solid border-[#F1F1F3] rounded-lg p-2 sm:p-6 bg-white w-[95%] sm:w-[90%] h-[84px] sm:h-[116px] mx-auto overflow-hidden">
+        {/* Card */}
+        <div
+          className="w-[112.33px] h-[64px] sm:w-[140px] custom:w-[160px] max-lg:w-[175.86px] sm:h-[68px]
+        justify-center items-center px-7.5 py-5 flex-1 order-0 flex-grow gap-x-7 flex"
+        >
           <img src={zapier} />
         </div>
 
         {/* Line */}
         <div className="rotate-90 self-stretch w-[64px] sm:w-[68px] border border-solid border-[#F1F1F3] flex-none flex-grow-0 h-0 -mx-2 sm:mx-0 my-auto flex"></div>
-        
+
         {/* Card */}
-        <div className="w-[112.33px] h-[64px] sm:w-[140px] custom:w-[160px] max-lg:w-[175.86px] sm:h-[68px] 
-        justify-center items-center px-7.5 py-5 flex-1 order-0 flex-grow gap-x-7 flex">
+        <div
+          className="w-[112.33px] h-[64px] sm:w-[140px] custom:w-[160px] max-lg:w-[175.86px] sm:h-[68px] 
+        justify-center items-center px-7.5 py-5 flex-1 order-0 flex-grow gap-x-7 flex"
+        >
           <img src={spotify} />
         </div>
 
         {/* Line */}
         <div className="rotate-90 self-stretch w-[64px] sm:w-[68px] border border-solid border-[#F1F1F3] flex-none flex-grow-0 h-0 -mx-2 sm:mx-0 my-auto flex"></div>
-        
+
         {/* Card */}
-        <div className="w-[112.33px] h-[64px] sm:w-[140px] custom:w-[160px] max-lg:w-[175.86px] sm:h-[68px] 
-        justify-center items-center px-7.5 py-5 flex-1 order-0 flex-grow gap-x-7 flex">
+        <div
+          className="w-[112.33px] h-[64px] sm:w-[140px] custom:w-[160px] max-lg:w-[175.86px] sm:h-[68px] 
+        justify-center items-center px-7.5 py-5 flex-1 order-0 flex-grow gap-x-7 flex"
+        >
           <img src={zoom} />
         </div>
 
         {/* Line */}
         <div className="rotate-90 self-stretch w-[64px] sm:w-[68px] border border-solid border-[#F1F1F3] flex-none flex-grow-0 h-0 -mx-2 sm:mx-0 my-auto hidden custom:flex"></div>
-        
+
         {/* Card */}
         <div className="w-[112.33px] h-[64px] sm:w-[140px] custom:w-[160px] max-lg:w-[175.86px] sm:h-[68px] justify-center items-center px-7.5 py-5 flex-1 order-0 flex-grow gap-x-7 hidden custom:flex">
           <img src={amazon} />
@@ -117,7 +124,7 @@ function Home() {
 
         {/* Line */}
         <div className="rotate-90 self-stretch w-[64px] sm:w-[68px] border border-solid border-[#F1F1F3] flex-none flex-grow-0 h-0 my-auto hidden max-lg:flex"></div>
-        
+
         {/* Card */}
         <div className="w-[112.33px] h-[64px] sm:w-[140px] custom:w-[160px] max-lg:w-[175.86px] sm:h-[68px] justify-center items-center px-7.5 py-5 flex-1 order-0 flex-grow gap-x-7 hidden max-lg:flex">
           <img src={adobe} />
@@ -125,7 +132,7 @@ function Home() {
 
         {/* Line */}
         <div className="rotate-90 self-stretch w-[64px] sm:w-[68px] border border-solid border-[#F1F1F3] flex-none flex-grow-0 h-0 my-auto hidden max-lg:flex"></div>
-        
+
         {/* Card */}
         <div className="w-[112.33px] h-[64px] sm:w-[140px] custom:w-[160px] max-lg:w-[175.86px] sm:h-[68px] justify-center items-center px-7.5 py-5 flex-1 order-0 flex-grow gap-x-7 hidden max-lg:flex">
           <img src={notion} />
@@ -133,13 +140,21 @@ function Home() {
 
         {/* Line */}
         <div className="rotate-90 self-stretch w-[64px] sm:w-[68px] border border-solid border-[#F1F1F3] flex-none flex-grow-0 h-0 my-auto hidden max-lg:flex"></div>
-        
+
         {/* Card */}
         <div className="w-[112.33px] h-[64px] sm:w-[140px] custom:w-[160px] max-lg:w-[175.86px] sm:h-[68px] justify-center items-center px-7.5 py-5 flex-1 order-0 flex-grow gap-x-7 hidden max-lg:flex">
           <img src={netflix} />
         </div>
       </div>
       
+
+      {/*Home Image*/}
+      <div className="mx-auto w-[95%] h-auto sm:w-[92%] my-5 sm:my-20">
+        <img src={home} className="w-full h-full"/>
+      </div>
+
+      <Benefits/>
+
     </>
   );
 }
