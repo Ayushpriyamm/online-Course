@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { orArr } from '../../assests'
 
 function BenefitCard({num,heading,text}) {

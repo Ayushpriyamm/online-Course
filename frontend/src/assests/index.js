@@ -20,6 +20,12 @@ import notion from "../assests/c6.svg";
 import netflix from "../assests/c7.svg";
 import home from "../assests/home.svg";
 import orArr from "../assests/orangeArrow.svg"
+import h1 from "../assests/thumbnails/1.svg";
+import h2 from "../assests/thumbnails/2.svg";
+import h3 from "../assests/thumbnails/3.svg";
+import h4 from "../assests/thumbnails/4.svg";
+import h5 from "../assests/thumbnails/5.svg";
+import h6 from "../assests/thumbnails/6.svg";
 
 export {
   fbIm,
@@ -43,5 +49,11 @@ export {
   notion,
   netflix,
   home,
-  orArr
+  orArr,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
 };

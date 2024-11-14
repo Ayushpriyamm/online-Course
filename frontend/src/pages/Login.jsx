@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import Button from "../compoents/Button";
 import { eye, eyeN, google, left, right, upR } from "../assests";

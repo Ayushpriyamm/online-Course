@@ -21,7 +21,7 @@ function Benefits() {
 
 
   return (
-    <div className="mt-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto sm:h-[935px] ">
+    <div className="mt-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto sm:h-[935px]">
       <div className="flex flex-col sm:flex-row justify-end 
       items-start sm:items-end gap-8 sm:gap-16 custom:gap-32 max-lg:gap-64 w-inherit h-[128px] max-lg:h-[110px] self-stretch">
         <div className="flex flex-col gap-3 flex-grow-0 self-stretch justify-between">

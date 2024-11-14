@@ -38,7 +38,7 @@ function Footer() {
           <div className="pt-6 ">
             <h2 className="font-bold text-xl pb-3 text-gray-800 cursor-pointer" onClick={scrollToTop}>Home</h2>
             <ul className="list-none space-y-2 text-lg text-gray-600">
-              <li className="hover:text-gray-800 cursor-pointer">Benefits</li>
+              <Link to="benefits"><li className="hover:text-gray-800 cursor-pointer">Benefits</li></Link>
               <li className="hover:text-gray-800 cursor-pointer">
                 Our Courses
               </li>
