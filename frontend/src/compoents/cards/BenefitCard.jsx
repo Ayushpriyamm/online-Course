@@ -1,7 +1,7 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
 import { orArr } from '../../assests'
 
-function BenefitCard({num,heading,text,hidden }) {
+function BenefitCard({num,heading,text}) {
   return (
     <div className='relative flex flex-col items-end p-7 sm:p-10 gap-4 sm:gap-6 max-lg:gap-10 w-full min-w-[290px] h-[340px] sm:w-[413px] sm:h-[346px]
     bg-white rounded-[10px] flex-grow-0 sm:flex-grow'>
