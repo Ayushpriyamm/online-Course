@@ -5,7 +5,13 @@ import { useState } from "react";
 
 function SignUp() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [isCheck, setIsCheck] = useState(true);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [see, setSee] = useState(false);
   const handleSee = () => {
@@ -21,7 +27,6 @@ function SignUp() {
   };
 
   const handleSubmit = async (e) => {
-    console.log("Button clicked ");
     e.preventDefault();
     try {
       setLoading(true);
@@ -38,18 +43,26 @@ function SignUp() {
       console.log(data);
 
       if (data.success == false) {
-        alert("Sign-up failed. Please check your input.");
+        setError(data.message);
         setLoading(false);
         return;
-      } else {
-        alert("Sign-up successful!");
-        navigate("/courses");
       }
+
+      setError(null);
+      navigate("/courses");
+      setLoading(false);
     } catch (error) {
       console.error("Error during sign-up:", error);
       setLoading(false);
     }
   };
+
+  const handleCheck = async (e) => {
+    setIsCheck(e.target.checked);
+  };
+
+  const isFormComplete =
+    formData.name && formData.email && formData.password && isCheck;
   return (
     <div
       className=" flex flex-col mx-auto mt-0 custom:mt-[4rem] mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-y-7
@@ -114,7 +127,7 @@ function SignUp() {
       </div>
 
       {/* SIGNUP PAGE*/}
-      <div className="w-full min-w-[21.95rem] max-w-[65%] mx-auto custom:w-[25rem] max-lg:w-[540px] flex  order-0 custom:order-1 flex-col flex-none  h-[766px] self-stretch items-start p-6 sm:p-10 gap-8 sm:h-[816px] bg-white rounded-[10px]">
+      <div className="w-full min-w-[21.95rem] max-w-[65%] mx-auto custom:w-[25rem] max-lg:w-[540px] flex order-0 custom:order-1 flex-col flex-none h-[786px] self-stretch items-start p-6 sm:p-10 gap-9 sm:h-[816px] bg-white rounded-[10px] space-y-2">
         <div className="flex flex-col justify-center items-center w-full h-[79px] self-stretch sm:h-[76px] gap-2 order-0">
           <h1 className="w-inherit h-[35px] sm:h-[48px] font-bold text-[28px] leading-[35px] sm:text-[38px] sm:leading-[48.07px] text-center self-stretch flex-grow-0 order-0">
             Sign Up
@@ -122,6 +135,7 @@ function SignUp() {
           <p className=" w-inherit h-[20px] font-normal text-[14px] leading-[18px] sm:text-[16px] sm:leading-[20px] text-center order-1 self-stretch flex-grow-0">
             Create an account to unlock exclusive features.
           </p>
+          {error && <p className="text-red-500">{error}</p>}
         </div>
 
         <form
@@ -184,8 +198,10 @@ function SignUp() {
             <div className="flex flex-row items-center gap-[8px] w-inherit w-inherit h-[24px] self-stretch order-3">
               <input
                 type="checkbox"
-                name="remember"
-                id="remember"
+                name="terms"
+                id="terms"
+                checked={isCheck}
+                onChange={handleCheck}
                 className="w-[24px] h-[24px] rounded bg-[#F7F7F8]"
               />
               <label htmlFor="terms">
@@ -200,7 +216,13 @@ function SignUp() {
               </label>
             </div>
             <div className=" self-stretch w-inherit sm:h-[49px] order-4">
-              <Button loading={loading} text={"Sign Up"} type="submit" orange />
+              <Button
+                loading={loading}
+                text={"Singup"}
+                type="submit"
+                orange
+                disabled={isFormComplete}
+              />
             </div>
           </div>
 
