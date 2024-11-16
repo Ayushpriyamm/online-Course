@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
-        default: ' https://img.freepik.com/free-photo/user-profile-icon-front-side-with-white-background_187299-40010.jpg?uid=R107565351&ga=GA1.1.844141304.1727195335&semt=ais_hybrid' // Replace with a real URL for the default avatar
+        default: 'https://t3.ftcdn.net/jpg/09/02/28/70/240_F_902287001_UIIWw90E5nDANrfcO3RTF9qqJdR37G32.jpg' // Replace with a real URL for the default avatar
     },
 
     enrolledCourse: [
