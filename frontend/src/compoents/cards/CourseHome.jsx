@@ -13,7 +13,7 @@ function CourseHome({ thumbnail,time,level,teacher,course_name,description }) {
         <h2 className="text-lg font-semibold">{course_name}</h2>
         <p className="font-normal text-sm leading-[150%] text-[#59595A] flex-none self-stretch flex-grow-1 line-clamp-5 sm:line-clamp-none">{description}</p>
       </div>
-      <div className="bg-[#F1F1F3] flex justify-center items-center w-full h-[49px] rounded-lg cursor-pointer">
+      <div className="bg-[#F1F1F3] flex justify-center items-center w-full h-[49px] rounded-lg cursor-pointer hover:bg-[#E5E5E5] active:bg-[#4C4C4D] active:text-white active:scale-95 transition-all ease-in-out duration-200">
         <button>Get it Now</button>
       </div>
     </div>

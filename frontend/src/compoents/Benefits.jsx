@@ -29,7 +29,7 @@ function Benefits() {
           <p className="text-[#59595A] text-base leading-6 line-clamp-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium neque culpa porro voluptatibus similique, ea ipsam. Ipsa iusto asperiores ab blanditiis tempore dicta, aut, quibusdam quas consequuntur deserunt voluptate fugiat?
           </p>
         </div>
-        <button className="sm:w-[21rem] h-[50px] px-5 py-3 bg-[#FCFCFD] rounded-md border border-solid border-[#F1F1F3] hover:bg-[#F1F1F3] transition-all:duration-3000 sm:hidden"
+        <button className="sm:w-[21rem] h-[50px] px-5 py-3 bg-[#FCFCFD] rounded-md border border-solid border-[#F1F1F3] hover:bg-[#E5E5E5] active:bg-orange-500 active:text-white active:scale-95 transition-all ease-in-out duration-200 sm:hidden"
         onClick={() => setView(!view)}>
             {view ? "View Less" : "View All"}
         </button>

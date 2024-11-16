@@ -21,8 +21,13 @@ import { Link } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 import Benefits from "../compoents/Benefits";
 import CourseHome from "../compoents/cards/CourseHome";
+import { useState } from "react";
+import TestimonialCard from "../compoents/cards/TestimonialCard";
 
 function Home() {
+  const [view, setView] = useState(true);
+  const [view2, setView2] = useState(false);
+
   return (
     <>
       {/*Hero Section*/}
@@ -152,53 +157,166 @@ function Home() {
           <img src={netflix} />
         </div>
       </div>
-      
 
       {/*Home Image*/}
       <div className="mx-auto w-[95%] h-auto sm:w-[92%] my-5 sm:my-20">
-        <img src={home} className="w-full h-full"/>
+        <img src={home} className="w-full h-full" />
       </div>
 
+      {/* Benefits */}
+      <Benefits />
 
-    {/* Benefits */}
-      <Benefits/>
-
-    {/* Courses */}
+      {/* Courses */}
 
       <div className="my-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto">
-      <div className="flex flex-col sm:flex-row justify-end 
-      items-start sm:items-end gap-8 sm:gap-16 custom:gap-32 max-lg:gap-64 w-inherit h-[128px] max-lg:h-[110px] self-stretch">
-        <div className="flex flex-col gap-3 flex-grow-0 self-stretch justify-between">
-          <h1 className="font-semibold text-4xl flex-grow-0 self-stretch">Our Courses</h1>
-          <p className="text-[#59595A] text-base leading-6 line-clamp-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium neque culpa porro voluptatibus similique, ea ipsam. Ipsa iusto asperiores ab blanditiis tempore dicta, aut, quibusdam quas consequuntur deserunt voluptate fugiat?
-          </p>
+        <div
+          className="flex flex-col sm:flex-row justify-end 
+      items-start sm:items-end gap-8 sm:gap-16 custom:gap-32 max-lg:gap-64 w-inherit h-[128px] max-lg:h-[110px] self-stretch"
+        >
+          <div className="flex flex-col gap-3 flex-grow-0 self-stretch justify-between">
+            <h1 className="font-semibold text-4xl flex-grow-0 self-stretch">
+              Our Courses
+            </h1>
+            <p className="text-[#59595A] text-base leading-6 line-clamp-4">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Accusantium neque culpa porro voluptatibus similique, ea ipsam.
+              Ipsa iusto asperiores ab blanditiis tempore dicta, aut, quibusdam
+              quas consequuntur deserunt voluptate fugiat?
+            </p>
+          </div>
+          <button
+            className="sm:w-[28rem] custom:w-[20rem] h-[51px] px-5 py-3 bg-[#FCFCFD] rounded-md border border-solid border-[#F1F1F3] hover:bg-[#E5E5E5] active:bg-orange-500 active:text-white active:scale-95 transition-all ease-in-out duration-200"
+            onClick={() => setView(!view)}
+          >
+            {view ? "View Less" : "View All"}
+          </button>
         </div>
-        <button className="sm:w-[21rem] h-[50px] px-5 py-3 bg-[#FCFCFD] rounded-md border border-solid border-[#F1F1F3] hover:bg-[#F1F1F3] transition-all:duration-3000 sm:hidden">
-            View All
-        </button>
+        <div className="flex flex-col w-inherit h-auto flex-grow-0  gap-4">
+          <div className="flex flex-col sm:flex-row w-inherit flex-grow gap-4 ">
+            <CourseHome
+              thumbnail={h1}
+              time="4 weeks"
+              level="Beginner"
+              teacher="By Priyam Sahab"
+              course_name="Web Design Fundamentals"
+              description="Learn the fundamentals of web design, including HTML, CSS, and responsive design principles. Develop the skills to create visually appealing and user-friendly websites."
+            />
+
+            <CourseHome
+              thumbnail={h2}
+              time="6 weeks"
+              level="Intermediate"
+              teacher="By Priyam John"
+              course_name="UI/UX Design"
+              description="Master the art of creating intuitive user interfaces (UI) and enhancing user experiences (UX). Learn design principles, wireframing, prototyping, and usability testing techniques."
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row w-inherit flex-grow gap-4 ">
+            <CourseHome
+              thumbnail={h3}
+              time="5 weeks"
+              level="Intermediate"
+              teacher="By Ayush One"
+              course_name="Mobile App Development"
+              description="Dive into the world of mobile app development. Learn to build native iOS and Android applications using industry-leading frameworks like Swift and Kotlin."
+            />
+
+            <CourseHome
+              thumbnail={h4}
+              time="10 weeks"
+              level="Beginner"
+              teacher="By Priyam Yadav"
+              course_name="Graphic Designer for Beginners"
+              description="Discover the fundamentals of graphic design, including typography, color theory, layout design, and image manipulation techniques. Create visually stunning designs for print and digital media."
+            />
+          </div>
+          {view && (
+            <>
+              <div className="flex flex-col sm:flex-row w-inherit flex-grow gap-4">
+                <CourseHome
+                  thumbnail={h5}
+                  time="10 weeks"
+                  level="Intermediate"
+                  teacher="By Priyam Jha"
+                  course_name="Front-End Web Development"
+                  description="Become proficient in front-end web development. Learn HTML, CSS, JavaScript, and popular frameworks like Bootstrap and React. Build interactive and responsive websites."
+                />
+
+                <CourseHome
+                  thumbnail={h6}
+                  time="6 weeks"
+                  level="Advanced"
+                  teacher="By Ayush Priyam"
+                  course_name="Advance JavaScript"
+                  description="Take your JavaScript skills to the next level. Explore advanced concepts like closures, prototypes, asynchronous programming, and ES6 features. Build complex applications with confidence."
+                />
+              </div>
+            </>
+          )}
+        </div>
       </div>
-      <div className="flex flex-col w-inherit h-auto flex-grow-0  gap-4">
-        <div className="flex flex-col sm:flex-row w-inherit flex-grow gap-4 ">
 
-          <CourseHome thumbnail={h1} time="4 weeks" level="Beginner" teacher="By Priyam Sahab" course_name="Web Design Fundamentals" description="Learn the fundamentals of web design, including HTML, CSS, and responsive design principles. Develop the skills to create visually appealing and user-friendly websites."/>
-
-          <CourseHome thumbnail={h2} time="6 weeks" level="Intermediate" teacher="By Priyam John" course_name="UI/UX Design" description="Master the art of creating intuitive user interfaces (UI) and enhancing user experiences (UX). Learn design principles, wireframing, prototyping, and usability testing techniques."/>
+      {/*Testimonials*/}
+      <div className="my-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto">
+        <div
+          className="flex flex-col sm:flex-row justify-end 
+      items-start sm:items-end gap-8 sm:gap-16 custom:gap-32 max-lg:gap-64 w-inherit h-[128px] max-lg:h-[110px] self-stretch"
+        >
+          <div className="flex flex-col gap-3 flex-grow-0 self-stretch justify-between">
+            <h1 className="font-semibold text-4xl flex-grow-0 self-stretch">
+              Our Testimonials
+            </h1>
+            <p className="text-[#59595A] text-base leading-6 line-clamp-4">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Accusantium neque culpa porro voluptatibus similique, ea ipsam.
+              Ipsa iusto asperiores ab blanditiis tempore dicta, aut, quibusdam
+              quas consequuntur deserunt voluptate fugiat?
+            </p>
+          </div>
+          <button
+            className="sm:w-[28rem] custom:w-[20rem] h-[51px] px-5 py-3 bg-[#FCFCFD] rounded-md border border-solid border-[#F1F1F3] hover:bg-[#E5E5E5] active:bg-orange-500 active:text-white active:scale-95 transition-all ease-in-out duration-200"
+            onClick={() => setView2(!view2)}
+          >
+            {view2 ? "View Less" : "View All"}
+          </button>
         </div>
-        <div className="flex flex-col sm:flex-row w-inherit flex-grow gap-4 ">
 
-          <CourseHome thumbnail={h3} time="5 weeks" level="Intermediate" teacher="By Ayush One" course_name="Mobile App Development" description="Dive into the world of mobile app development. Learn to build native iOS and Android applications using industry-leading frameworks like Swift and Kotlin."/>
-
-
-          <CourseHome thumbnail={h4} time="10 weeks" level="Beginner" teacher="By Priyam Yadav" course_name="Graphic Designer for Beginners" description="Discover the fundamentals of graphic design, including typography, color theory, layout design, and image manipulation techniques. Create visually stunning designs for print and digital media."/>
+        <div className="flex flex-col w-inherit h-auto flex-grow-0  gap-4">
+          <div className="flex flex-col custom:flex-row w-inherit flex-grow gap-4 ">
+            <TestimonialCard
+              name="Ayush Priyam"
+              comment="The UI/UX design course exceeded my expectations. The instructor's expertise and practical assignments helped me improve my design skills. I feel more confident in my career now. Ty!"
+            />
+            <TestimonialCard
+              name="Ayush Priyam"
+              comment="The mobile app development course was fantastic! The step-by-step tutorials and hands-on projects helped me grasp the concepts easily. I'm now building my own app. Great course!"
+            />
+          </div>
+          <div className="flex flex-col custom:flex-row w-inherit flex-grow gap-4 ">
+            <TestimonialCard
+              name="Ayush Priyam"
+              comment="The web design course provided a solid foundation for me. The instructors were knowledgeable and supportive, and the interactive learning environment was engaging. I highly recommend it!"
+            />
+            <TestimonialCard
+              name="Ayush Priyam"
+              comment="I enrolled in the graphic design course as a beginner, and it was the perfect starting point. The instructor's guidance and feedback improved my design abilities. I'm grateful for this course!"
+            />
+          </div>
+          {view2 && (
+            <>
+              <div className="flex flex-col custom:flex-row w-inherit flex-grow  gap-4">
+                <TestimonialCard
+                  name="Ayush Priyam"
+                  comment="The web design course provided a solid foundation for me. The instructors were knowledgeable and supportive, and the interactive learning environment was engaging. I highly recommend it!"
+                />
+               <TestimonialCard
+              name="Ayush Priyam"
+              comment="The mobile app development course was fantastic! The step-by-step tutorials and hands-on projects helped me grasp the concepts easily. I'm now building my own app. Great course!"
+            />
+              </div>
+            </>
+          )}
         </div>
-        <div className="flex flex-col sm:flex-row w-inherit flex-grow gap-4">
-
-        <CourseHome thumbnail={h5} time="10 weeks" level="Intermediate" teacher="By Priyam Jha" course_name="Front-End Web Development" description="Become proficient in front-end web development. Learn HTML, CSS, JavaScript, and popular frameworks like Bootstrap and React. Build interactive and responsive websites."/>
-
-        <CourseHome thumbnail={h6} time="6 weeks" level="Advanced" teacher="By Ayush Priyam" course_name="Advance JavaScript"
-        description="Take your JavaScript skills to the next level. Explore advanced concepts like closures, prototypes, asynchronous programming, and ES6 features. Build complex applications with confidence."/>
-        </div>
-      </div>
       </div>
     </>
   );
