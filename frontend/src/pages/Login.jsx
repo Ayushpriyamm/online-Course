@@ -2,11 +2,21 @@ import { useState } from "react";
 import Button from "../compoents/Button";
 import { eye, eyeN, google, left, right, upR } from "../assests";
 import { Link, useNavigate } from "react-router-dom";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/user/userSlice";
+
+import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
   const [formData, setFormData] = useState({});
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const { error, loading } = useSelector((state) => state.user);
+
   console.log(error);
 
   const navigate = useNavigate();
@@ -20,30 +30,29 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true);
+      dispatch(signInStart);
 
       const res = await fetch("http://localhost:8000/api/v1/auth/signin", {
         method: "POST",
         headers: {
           "content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(formData),
       });
-      console.log("button clicked");
+
       const data = await res.json();
 
       if (data.success == false) {
-        setError(data.message);
-        setLoading(false);
+        dispatch(signInFailure(data.message));
         return;
       }
 
-      setError(null);
-      navigate("/courses");
-      setLoading(false);
+      dispatch(signInSuccess(data));
+      navigate("/courses", { replace: true });
     } catch (error) {
       console.error("Error during sign-up:", error);
-      setLoading(false);
+      dispatch(signInFailure(error.message));
     }
   };
 
