@@ -23,6 +23,7 @@ import Benefits from "../compoents/Benefits";
 import CourseHome from "../compoents/cards/CourseHome";
 import { useState } from "react";
 import TestimonialCard from "../compoents/cards/TestimonialCard";
+import FAQ from "../compoents/FAQ";
 
 function Home() {
   const [view, setView] = useState(true);
@@ -318,6 +319,12 @@ function Home() {
           )}
         </div>
       </div>
+
+
+      {/*FAQ*/}
+
+      <FAQ/>
+      
     </>
   );
 }

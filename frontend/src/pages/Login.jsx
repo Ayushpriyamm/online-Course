@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "../compoents/Button";
-import { eye, eyeN, google, left, right, upR } from "../assests";
+import { eye, eyeN, ggl,left, right, upR } from "../assests";
 import { Link, useNavigate } from "react-router-dom";
 import {
   signInStart,
@@ -193,7 +193,7 @@ function Login() {
           <h1 className="w-inherit h-[35px] sm:h-[48px] font-bold text-[28px] leading-[35px] sm:text-[38px] sm:leading-[48.07px] text-center self-stretch flex-grow-0 order-0">
             Login
           </h1>
-          <p className=" w-inherit h-[20px] font-normal text-[14px] leading-[18px] sm:text-[15px] sm:leading-[20px] text-center order-1 self-stretch flex-grow-0">
+          <p className=" w-inherit h-[20px] font-normal text-[14px] leading-[18px] sm:text-[15px] sm:leading-[20px] text-center order-1 self-stretch flex-grow-0 text-[#4C4C4D]">
             Welcome back! Please log in to access your account.
           </p>
           {error && <p className="text-red-500">{error}</p>}
@@ -251,7 +251,7 @@ function Login() {
                 id="remember"
                 className="w-[24px] h-[24px] rounded bg-[#F7F7F8]"
               />
-              <label htmlFor="remember">Remember Me</label>
+              <label htmlFor="remember" className="text-[#4C4C4D]">Remember Me</label>
             </div>
             <div className=" self-stretch w-full sm:h-[49px]">
               <Button loading={loading} text={"Login"} type="submit" orange />
@@ -266,14 +266,15 @@ function Login() {
             <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
           </div>
 
-          <div className="w-inherit sm:h-[49px]">
-            <img src={google} className="cursor-pointer hover:shadow-md" />
+          <div className="w-full sm:h-[49px] mx-auto flex justify-center items-center gap-4 rounded-lg bg-[#F1F1F3] cursor-pointer hover:shadow-md active:scale-95 transition-all ease-in-out duration-200 py-3">
+            <img src={ggl}/>
+            <span>Login with Google</span>
           </div>
           <Link
             to="/signup"
-            className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center font-medium text-base sm:text-lg leading-[150%] self-stretch "
+            className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch text-[#4C4C4D]"
           >
-            Don't have an account ? <span className="underline"> Sign Up </span>
+            Don't have an account ? <span className="underline font-medium text-[#262626]"> Sign Up </span>
             <span>
               <img src={upR} />
             </span>
