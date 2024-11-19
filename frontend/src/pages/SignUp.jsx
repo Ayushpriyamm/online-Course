@@ -2,6 +2,13 @@ import { eye, eyeN, ggl, google, left, right, upR } from "../assests";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Button from "../components/Button";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/user/userSlice";
+
+import { useDispatch, useSelector } from "react-redux";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -10,7 +17,7 @@ function SignUp() {
     email: "",
     password: "",
   });
-  const [isCheck, setIsCheck] = useState(false);
+  const [isCheck, setIsCheck] = useState(true);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [see, setSee] = useState(false);
@@ -28,8 +35,8 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(signInStart());
     try {
-      setLoading(true);
       const res = await fetch("http://localhost:8000/api/v1/auth/signup", {
         method: "POST",
         headers: {
@@ -40,20 +47,16 @@ function SignUp() {
 
       const data = await res.json();
 
-      console.log(data);
-
       if (data.success == false) {
-        setError(data.message);
-        setLoading(false);
+        dispatch(signInFailure(data.message));
         return;
       }
 
-      setError(null);
-      navigate("/courses");
-      setLoading(false);
+      dispatch(signInSuccess(data));
+      navigate("/courses", { replace: true });
     } catch (error) {
       console.error("Error during sign-up:", error);
-      setLoading(false);
+      dispatch(signInFailure(error.message));
     }
   };
 

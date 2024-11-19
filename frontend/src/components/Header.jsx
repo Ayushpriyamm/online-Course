@@ -1,14 +1,25 @@
 import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
-import {logo } from "../assests";
+import { logo } from "../assests";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowRightFromBracket} from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faArrowRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 
 function Header() {
   const { currentUser } = useSelector((state) => state.user);
   const [isOpen, setIsOpen] = useState(false);
+
+  const userName =
+    currentUser?.user?.name || currentUser?.newUser?.name || "Guest";
+  const userAvatar =
+    currentUser?.user?.avatar ||
+    currentUser?.newUser?.avatar ||
+    "default-avatar-url";
+
   const handleDropDown = () => {
     setIsOpen(!isOpen);
   };
@@ -87,16 +98,17 @@ function Header() {
         {/*logout btn to be added*/}
         <div className="flex items-center mr-3 gap-x-4">
           {currentUser ? (
-            <Link to="/" className="flex items-center gap-2 self-stretch">
+            <Link to="/" className="flex items-center gap-2">
               <p>Hi, {currentUser?.user.name}</p>
               <img
                 className="rounded-full h-10 w-10 object-cover"
-                src={currentUser?.user.avatar || "default-avatar-url"}
+                src={userAvatar}
                 alt="profile"
-                />
-              <span className="p-1 cursor-pointer active:hidden"><FontAwesomeIcon icon={faArrowRightFromBracket} size="2x" /></span>
+              />
+              <span className="p-1 cursor-pointer active:hidden">
+                <FontAwesomeIcon icon={faArrowRightFromBracket} size="2x" />
+              </span>
             </Link>
-            
           ) : (
             <>
               <Link to="/signup">
