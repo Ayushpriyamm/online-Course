@@ -10,7 +10,7 @@ import google from "../assests/google.svg";
 import upR from "../assests/upright.svg";
 import left from "../assests/leftToggle.svg";
 import right from "../assests/rightToggle.svg";
-import ggl from "../assests/google.png";
+import ggl from "../assests/ggl.png";
 import zapier from "../assests/c1.svg";
 import spotify from "../assests/c2.svg";
 import zoom from "../assests/c3.svg";
