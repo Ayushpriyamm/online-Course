@@ -9,6 +9,14 @@ import { useSelector } from "react-redux";
 function Header() {
   const { currentUser } = useSelector((state) => state.user);
   const [isOpen, setIsOpen] = useState(false);
+
+  const userName =
+    currentUser?.user?.name || currentUser?.newUser?.name || "Guest";
+  const userAvatar =
+    currentUser?.user?.avatar ||
+    currentUser?.newUser?.avatar ||
+    "default-avatar-url";
+
   const handleDropDown = () => {
     setIsOpen(!isOpen);
   };
@@ -86,10 +94,10 @@ function Header() {
         <div className="flex items-center mr-3 gap-x-4">
           {currentUser ? (
             <Link to="/" className="flex items-center gap-2">
-              <p>Hi, {currentUser?.user.name}</p>
+              <p>Hi,{userName}</p>
               <img
                 className="rounded-full h-10 w-10 object-cover"
-                src={currentUser?.user.avatar || "default-avatar-url"}
+                src={userAvatar}
                 alt="profile"
               />
             </Link>

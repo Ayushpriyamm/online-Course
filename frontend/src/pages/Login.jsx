@@ -12,8 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
   const [formData, setFormData] = useState({});
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(null);
+
   const dispatch = useDispatch();
   const { error, loading } = useSelector((state) => state.user);
 
@@ -30,7 +29,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(signInStart);
+      dispatch(signInStart());
 
       const res = await fetch("http://localhost:8000/api/v1/auth/signin", {
         method: "POST",

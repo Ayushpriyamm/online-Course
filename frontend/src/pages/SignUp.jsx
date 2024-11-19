@@ -2,6 +2,13 @@ import Button from "../compoents/Button";
 import { eye, eyeN, google, left, right, upR } from "../assests";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/user/userSlice";
+
+import { useDispatch, useSelector } from "react-redux";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -11,8 +18,10 @@ function SignUp() {
     password: "",
   });
   const [isCheck, setIsCheck] = useState(true);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  const { loading, error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [see, setSee] = useState(false);
   const handleSee = () => {
     setSee(!see);
@@ -28,8 +37,8 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(signInStart());
     try {
-      setLoading(true);
       const res = await fetch("http://localhost:8000/api/v1/auth/signup", {
         method: "POST",
         headers: {
@@ -40,20 +49,16 @@ function SignUp() {
 
       const data = await res.json();
 
-      console.log(data);
-
       if (data.success == false) {
-        setError(data.message);
-        setLoading(false);
+        dispatch(signInFailure(data.message));
         return;
       }
 
-      setError(null);
-      navigate("/courses");
-      setLoading(false);
+      dispatch(signInSuccess(data));
+      navigate("/courses", { replace: true });
     } catch (error) {
       console.error("Error during sign-up:", error);
-      setLoading(false);
+      dispatch(signInFailure(error.message));
     }
   };
 
@@ -64,51 +69,50 @@ function SignUp() {
   const isFormComplete =
     formData.name && formData.email && formData.password && isCheck;
 
+  const testimonials = [
+    {
+      name: "Ayush Priyam",
+      comment:
+        "The web design course provided a solid foundation for me. The instructors were knowledgeable and supportive, and the interactive learning environment was engaging. I highly recommend it!",
+      img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    },
+    {
+      name: "Ayush Pandey",
+      comment:
+        "The course exceeded my expectations. The instructor's expertise and practical assignments helped me improve my coding skills. I'm now a proficient web developer. Thank you!",
+      img: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      name: "Dubey Priyam",
+      comment:
+        "The UI/UX design course exceeded my expectations. The instructor's expertise and practical assignments helped me improve my design skills. I feel more confident in my career now. Thank you!",
+      img: "https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      name: "Ayush Jaat",
+      comment:
+        "The mobile app development course was fantastic! The step-by-step tutorials and hands-on projects helped me grasp the concepts easily. I'm now building my own app. Great course!",
+      img: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+    },
+  ];
 
-    const testimonials = [
-      {
-        name: "Ayush Priyam",
-        comment:
-          "The web design course provided a solid foundation for me. The instructors were knowledgeable and supportive, and the interactive learning environment was engaging. I highly recommend it!",
-          img:"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-        },
-        {
-          name: "Ayush Pandey",
-          comment:
-          "The course exceeded my expectations. The instructor's expertise and practical assignments helped me improve my coding skills. I'm now a proficient web developer. Thank you!",
-          img:"https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=600"
-        },
-        {
-          name: "Dubey Priyam",
-          comment:
-          "The UI/UX design course exceeded my expectations. The instructor's expertise and practical assignments helped me improve my design skills. I feel more confident in my career now. Thank you!",
-          img:"https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=600"
-        },
-        {
-        name: "Ayush Jaat",
-        comment:
-          "The mobile app development course was fantastic! The step-by-step tutorials and hands-on projects helped me grasp the concepts easily. I'm now building my own app. Great course!",
-          img:"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
-      },
-    ];
-  
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [direction, setDirection] = useState("");
-  
-    const handleLeftClick = () => {
-      setDirection("left");
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-      );
-    };
-  
-    const handleRightClick = () => {
-      setDirection("right");
-      setCurrentIndex((prevIndex) =>
-        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-      );
-    };
-  
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState("");
+
+  const handleLeftClick = () => {
+    setDirection("left");
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleRightClick = () => {
+    setDirection("right");
+    setCurrentIndex((prevIndex) =>
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   return (
     <div
       className=" flex flex-col mx-auto mt-0 custom:mt-[4rem] mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-y-7
