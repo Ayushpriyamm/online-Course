@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Button from "../compoents/Button";
-import { eye, eyeN, ggl,left, right, upR } from "../assests";
+import Button from "../components/Button";
+import { eye, eyeN, ggl, left, right, upR } from "../assests";
 import { Link, useNavigate } from "react-router-dom";
 import {
   signInStart,
@@ -251,7 +251,9 @@ function Login() {
                 id="remember"
                 className="w-[24px] h-[24px] rounded bg-[#F7F7F8]"
               />
-              <label htmlFor="remember" className="text-[#4C4C4D]">Remember Me</label>
+              <label htmlFor="remember" className="text-[#4C4C4D]">
+                Remember Me
+              </label>
             </div>
             <div className=" self-stretch w-full sm:h-[49px]">
               <Button loading={loading} text={"Login"} type="submit" orange />
@@ -267,14 +269,18 @@ function Login() {
           </div>
 
           <div className="w-full sm:h-[49px] mx-auto flex justify-center items-center gap-4 rounded-lg bg-[#F1F1F3] cursor-pointer hover:shadow-md active:scale-95 transition-all ease-in-out duration-200 py-3">
-            <img src={ggl}/>
+            <img src={ggl} />
             <span>Login with Google</span>
           </div>
           <Link
             to="/signup"
             className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch text-[#4C4C4D]"
           >
-            Don't have an account ? <span className="underline font-medium text-[#262626]"> Sign Up </span>
+            Don't have an account ?{" "}
+            <span className="underline font-medium text-[#262626]">
+              {" "}
+              Sign Up{" "}
+            </span>
             <span>
               <img src={upR} />
             </span>

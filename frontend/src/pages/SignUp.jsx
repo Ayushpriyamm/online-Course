@@ -1,7 +1,7 @@
-import Button from "../compoents/Button";
 import { eye, eyeN, ggl, google, left, right, upR } from "../assests";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Button from "../components/Button";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -64,51 +64,50 @@ function SignUp() {
   const isFormComplete =
     formData.name && formData.email && formData.password && isCheck;
 
+  const testimonials = [
+    {
+      name: "Ayush Priyam",
+      comment:
+        "The web design course provided a solid foundation for me. The instructors were knowledgeable and supportive, and the interactive learning environment was engaging. I highly recommend it!",
+      img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+    },
+    {
+      name: "Ayush Pandey",
+      comment:
+        "The course exceeded my expectations. The instructor's expertise and practical assignments helped me improve my coding skills. I'm now a proficient web developer. Thank you!",
+      img: "https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      name: "Dubey Priyam",
+      comment:
+        "The UI/UX design course exceeded my expectations. The instructor's expertise and practical assignments helped me improve my design skills. I feel more confident in my career now. Thank you!",
+      img: "https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=600",
+    },
+    {
+      name: "Ayush Jaat",
+      comment:
+        "The mobile app development course was fantastic! The step-by-step tutorials and hands-on projects helped me grasp the concepts easily. I'm now building my own app. Great course!",
+      img: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400",
+    },
+  ];
 
-    const testimonials = [
-      {
-        name: "Ayush Priyam",
-        comment:
-          "The web design course provided a solid foundation for me. The instructors were knowledgeable and supportive, and the interactive learning environment was engaging. I highly recommend it!",
-          img:"https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-        },
-        {
-          name: "Ayush Pandey",
-          comment:
-          "The course exceeded my expectations. The instructor's expertise and practical assignments helped me improve my coding skills. I'm now a proficient web developer. Thank you!",
-          img:"https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=600"
-        },
-        {
-          name: "Dubey Priyam",
-          comment:
-          "The UI/UX design course exceeded my expectations. The instructor's expertise and practical assignments helped me improve my design skills. I feel more confident in my career now. Thank you!",
-          img:"https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=600"
-        },
-        {
-        name: "Ayush Jaat",
-        comment:
-          "The mobile app development course was fantastic! The step-by-step tutorials and hands-on projects helped me grasp the concepts easily. I'm now building my own app. Great course!",
-          img:"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"
-      },
-    ];
-  
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [direction, setDirection] = useState("");
-  
-    const handleLeftClick = () => {
-      setDirection("left");
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-      );
-    };
-  
-    const handleRightClick = () => {
-      setDirection("right");
-      setCurrentIndex((prevIndex) =>
-        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-      );
-    };
-  
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState("");
+
+  const handleLeftClick = () => {
+    setDirection("left");
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleRightClick = () => {
+    setDirection("right");
+    setCurrentIndex((prevIndex) =>
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   return (
     <div
       className=" flex flex-col mx-auto mt-0 custom:mt-[4rem] mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-y-7
@@ -298,14 +297,18 @@ function SignUp() {
           </div>
 
           <div className="w-full sm:h-[49px] mx-auto flex justify-center items-center gap-4 rounded-lg bg-[#F1F1F3] cursor-pointer hover:shadow-md active:scale-95 transition-all ease-in-out duration-200 py-3 order-2">
-            <img src={ggl}/>
+            <img src={ggl} />
             <span>Sign Up with Google</span>
           </div>
           <Link
             to="/login"
             className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch order-3 mt-2 sm:mt-0 text-[#4C4C4D]"
           >
-            Already have an account ? <span className="underline font-semibold text-[#262626]"> Login </span>
+            Already have an account ?{" "}
+            <span className="underline font-semibold text-[#262626]">
+              {" "}
+              Login{" "}
+            </span>
             <span>
               <img src={upR} />
             </span>

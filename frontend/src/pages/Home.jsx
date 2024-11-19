@@ -16,18 +16,20 @@ import {
   zapier,
   zoom,
 } from "../assests";
-import Button from "../compoents/Button";
-import { Link } from "react-router-dom";
+import Button from "../components/Button";
+import { Link} from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
-import Benefits from "../compoents/Benefits";
-import CourseHome from "../compoents/cards/CourseHome";
+import Benefits from "../components/Benefits";
+import CourseHome from "../components/cards/CourseHome";
 import { useState } from "react";
-import TestimonialCard from "../compoents/cards/TestimonialCard";
-import FAQ from "../compoents/FAQ";
+import TestimonialCard from "../components/cards/TestimonialCard";
+import FAQ from "../components/FAQ";
+import PricingCard from "../components/cards/PricingCard";
 
 function Home() {
   const [view, setView] = useState(true);
   const [view2, setView2] = useState(false);
+  const [priceType, setPriceType] = useState("monthly");
 
   return (
     <>
@@ -310,21 +312,61 @@ function Home() {
                   name="Ayush Priyam"
                   comment="The web design course provided a solid foundation for me. The instructors were knowledgeable and supportive, and the interactive learning environment was engaging. I highly recommend it!"
                 />
-               <TestimonialCard
-              name="Ayush Priyam"
-              comment="The mobile app development course was fantastic! The step-by-step tutorials and hands-on projects helped me grasp the concepts easily. I'm now building my own app. Great course!"
-            />
+                <TestimonialCard
+                  name="Ayush Priyam"
+                  comment="The mobile app development course was fantastic! The step-by-step tutorials and hands-on projects helped me grasp the concepts easily. I'm now building my own app. Great course!"
+                />
               </div>
             </>
           )}
         </div>
       </div>
 
+      {/*Pricing*/}
+      <div className="my-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto">
+        <div
+          className="flex flex-col sm:flex-row justify-end 
+      items-start sm:items-end gap-8 sm:gap-16 custom:gap-32 max-lg:gap-64 w-inherit h-[128px] max-lg:h-[110px] self-stretch"
+        >
+          <div className="flex flex-col gap-3 flex-grow-0 self-stretch justify-start">
+            <h1 className="font-semibold text-4xl flex-grow-0 self-stretch">
+              Our Pricing
+            </h1>
+            <p className="text-[#59595A] text-base leading-6 line-clamp-4">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Accusantium neque culpa porro voluptatibus similique, ea ipsam.
+              Ipsa iusto asperiores ab blanditiis tempore dicta, aut, quibusdam
+              quas consequuntur deserunt voluptate fugiat?
+            </p>
+          </div>
+          <div className="sm:w-[28rem] custom:w-[20rem] h-auto px-3 py-3 bg-white rounded-md flex gap-2 items-center justify-center mx-auto sm:mx-0">
+            <div
+              className={
+                ` px-4 py-2 text-center rounded-md cursor-pointer ${
+                  priceType==="monthly" ? "bg-orange-500 text-white" :""}`}
+                  onClick={() => setPriceType("monthly")}
+            >
+              Monthly
+            </div>
+            <div
+              className={
+                `px-4 py-2 text-center rounded-md cursor-pointer ${priceType==="yearly" ? "bg-orange-500 text-white" : ""}`}
+                onClick={() => setPriceType("yearly")}
+            >
+              Yearly
+            </div>
+          </div>
+        </div>
 
+        <div className="w-full h-auto flex flex-col custom:flex-row items-center px-10 py-10 custom:py-14 custom:px-12 max-lg:px-20 max-lg:py-16 justify-center custom:gap-12 max-lg:gap-16 gap-10 flex-grow-0 self-stretch bg-white rounded-lg">
+          <PricingCard isFree  priceType={priceType}/>
+          <PricingCard isFree={false} priceType={priceType}/>
+        </div>
+      </div>
+      
       {/*FAQ*/}
 
-      <FAQ/>
-      
+      <FAQ />
     </>
   );
 }
