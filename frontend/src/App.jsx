@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import Pricing from "./pages/Pricing";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import { Profile } from "./pages/Profile";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -24,6 +25,7 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
     )
   );

@@ -109,3 +109,23 @@ export const signin = async(req, res) => {
     }
     
 }
+
+export const signout = async (req, res) => {
+    try {
+        res.clearCookie('authToken', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV == "production",
+            sameSite:"strict",
+        });
+        
+        return res.status(200).json({
+            success: true,
+            message: "User has been logged out successfully",
+        });
+    } catch (error) {
+        console.error("something went wrong ❌" ,error)
+        return res.status(500).json({
+            message:"something went wrong ❌"
+        })
+    }
+}

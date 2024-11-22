@@ -16,10 +16,7 @@ function Login() {
   const dispatch = useDispatch();
   const { error, loading } = useSelector((state) => state.user);
 
-  console.log(error);
-
   const navigate = useNavigate();
-  console.log(formData);
 
   const [see, setSee] = useState(false);
   const handleSee = () => {
@@ -50,7 +47,6 @@ function Login() {
       dispatch(signInSuccess(data));
       navigate("/courses", { replace: true });
     } catch (error) {
-      console.error("Error during sign-up:", error);
       dispatch(signInFailure(error.message));
     }
   };

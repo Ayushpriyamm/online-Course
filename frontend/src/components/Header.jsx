@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { logo } from "../assests";
 import { useState } from "react";
@@ -7,11 +7,20 @@ import {
   faArrowRight,
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  signoutFailure,
+  signoutStart,
+  signoutSuccess,
+} from "../redux/user/userSlice";
 
 function Header() {
   const { currentUser } = useSelector((state) => state.user);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const userName =
     currentUser?.user?.name || currentUser?.newUser?.name || "Guest";
@@ -23,6 +32,33 @@ function Header() {
   const handleDropDown = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleSignOut = async () => {
+    try {
+      dispatch(signoutStart());
+
+      const res = await fetch("http://localhost:8000/api/v1/auth/signout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        dispatch(signoutFailure(data.message || "Failed to sign out"));
+        return;
+      }
+      dispatch(signoutSuccess());
+      navigate("/");
+    } catch (error) {
+      dispatch(
+        signoutFailure(error.message || "An error occurred during signout")
+      );
+    }
+  };
+
   return (
     <>
       <Link to="/courses">
@@ -98,17 +134,24 @@ function Header() {
         {/*logout btn to be added*/}
         <div className="flex items-center mr-3 gap-x-4">
           {currentUser ? (
-            <Link to="/" className="flex items-center gap-2">
-              <p>Hi, {currentUser?.user.name}</p>
-              <img
-                className="rounded-full h-10 w-10 object-cover"
-                src={userAvatar}
-                alt="profile"
-              />
-              <span className="p-1 cursor-pointer active:hidden">
+            <>
+              <Link to="/" className="flex items-center gap-2">
+                <p>Hi, {userName}</p>
+                <img
+                  className="rounded-full h-10 w-10 object-cover"
+                  src={userAvatar}
+                  alt="profile"
+                />
+              </Link>
+              <span
+                className="p-1 cursor-pointer"
+                onClick={() => {
+                  handleSignOut();
+                }}
+              >
                 <FontAwesomeIcon icon={faArrowRightFromBracket} size="2x" />
               </span>
-            </Link>
+            </>
           ) : (
             <>
               <Link to="/signup">

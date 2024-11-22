@@ -11,6 +11,9 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 function SignUp() {
+  const dispatch = useDispatch();
+  const { error, loading } = useSelector((state) => state.user);
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -18,8 +21,7 @@ function SignUp() {
     password: "",
   });
   const [isCheck, setIsCheck] = useState(true);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+
   const [see, setSee] = useState(false);
   const handleSee = () => {
     setSee(!see);
