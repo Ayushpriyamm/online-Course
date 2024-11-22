@@ -115,7 +115,8 @@ export const signout = async (req, res) => {
         res.clearCookie('authToken', {
             httpOnly: true,
             secure: process.env.NODE_ENV == "production",
-            sameSite:"strict",
+            sameSite: "strict",
+             path: "/"
         });
         
         return res.status(200).json({

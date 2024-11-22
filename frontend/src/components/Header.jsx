@@ -42,17 +42,20 @@ function Header() {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include", // Ensure cookies are sent
       });
 
-      const data = await res.json();
+      const data = await res.json().catch(() => null);
 
-      if (!res.ok || !data.success) {
-        dispatch(signoutFailure(data.message || "Failed to sign out"));
+      if (!data || !res.ok || !data.success) {
+        dispatch(signoutFailure(data?.message || "Failed to sign out"));
         return;
       }
+
       dispatch(signoutSuccess());
       navigate("/");
     } catch (error) {
+      console.error("Signout error:", error);
       dispatch(
         signoutFailure(error.message || "An error occurred during signout")
       );
