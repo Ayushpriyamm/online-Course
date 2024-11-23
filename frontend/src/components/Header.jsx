@@ -23,10 +23,14 @@ function Header() {
   const dispatch = useDispatch();
 
   const userName =
-    currentUser?.user?.name || currentUser?.newUser?.name || "Guest";
+    currentUser?.user?.name ||
+    currentUser?.newUser?.name ||
+    currentUser?.existingUser.name ||
+    "Guest";
   const userAvatar =
     currentUser?.user?.avatar ||
     currentUser?.newUser?.avatar ||
+    currentUser?.existingUser.avatar ||
     "default-avatar-url";
 
   const handleDropDown = () => {

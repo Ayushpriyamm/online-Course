@@ -130,3 +130,62 @@ export const signout = async (req, res) => {
         })
     }
 }
+
+export const google = async (req, res) => {
+    try {
+        const { name, email, avatar } = req.body;
+
+        const existingUser =await User.findOne({ email: email.toLowerCase() });
+
+        if (existingUser) {
+            const token = generateToken(existingUser._id);
+
+            res.cookie("authToken", token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite: "strict",
+                maxAge: 24 * 60 * 60 * 1000, // 1 day
+            });
+
+            res.status(200).json({
+                success:true,
+                token,
+                message: "signin successfull",
+                existingUser,
+            })
+        } else {
+            const generatePassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
+            const hashedPassword = await bcrypt.hash(generatePassword, 10)
+            
+            const newUser =await User.create({
+                name: name,
+                email: email.toLowerCase(),
+                password:hashedPassword,
+                avatar:avatar
+            })
+
+            const token = generateToken(newUser._id);
+
+        //setting token in a cookie 
+            res.cookie("authToken", token, {
+                secure: process.env.NODE_ENV === "production",
+                httpOnly: true,
+                sameSite: "strict",
+                maxAge: 24 * 60 * 60 * 1000, 
+            })
+
+            res.status(201).json({
+                success:true,
+                token,
+                message: "signup successfull",
+                newUser,
+            })
+        }
+    } catch (error) {
+        console.error("something went wrong ❌" ,error)
+        return res.status(500).json({
+            success:false,
+            message:"something went wrong ❌"
+        })
+    }
+}

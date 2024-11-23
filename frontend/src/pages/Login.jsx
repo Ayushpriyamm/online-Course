@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import { eye, eyeN, ggl, left, right, upR } from "../assests";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,9 +6,11 @@ import {
   signInStart,
   signInSuccess,
   signInFailure,
+  clearError,
 } from "../redux/user/userSlice";
 
 import { useDispatch, useSelector } from "react-redux";
+import { GoogleAuth } from "../components/GoogleAuth";
 
 function Login() {
   const [formData, setFormData] = useState({});
@@ -22,6 +24,10 @@ function Login() {
   const handleSee = () => {
     setSee(!see);
   };
+
+  useEffect(() => {
+    dispatch(clearError());
+  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -193,7 +199,6 @@ function Login() {
           </p>
           {error && <p className="text-red-500">{error}</p>}
         </div>
-
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-6 items-start w-inherit h-[518px] sm:h-[536px] self-stretch"
@@ -254,33 +259,30 @@ function Login() {
               <Button loading={loading} text={"Login"} type="submit" orange />
             </div>
           </div>
-
-          <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-[21px] self-stretch">
-            <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
-            <span className="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
-              OR
-            </span>
-            <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
-          </div>
-
-          <div className="w-full sm:h-[49px] mx-auto flex justify-center items-center gap-4 rounded-lg bg-[#F1F1F3] cursor-pointer hover:shadow-md active:scale-95 transition-all ease-in-out duration-200 py-3">
-            <img src={ggl} />
-            <span>Login with Google</span>
-          </div>
-          <Link
-            to="/signup"
-            className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch text-[#4C4C4D]"
-          >
-            Don't have an account ?{" "}
-            <span className="underline font-medium text-[#262626]">
-              {" "}
-              Sign Up{" "}
-            </span>
-            <span>
-              <img src={upR} />
-            </span>
-          </Link>
         </form>
+        <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-[21px] self-stretch">
+          <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
+          <span className="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
+            OR
+          </span>
+
+          <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
+        </div>
+        <GoogleAuth />
+
+        <Link
+          to="/signup"
+          className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch text-[#4C4C4D]"
+        >
+          Don't have an account ?{" "}
+          <span className="underline font-medium text-[#262626]">
+            {" "}
+            Sign Up{" "}
+          </span>
+          <span>
+            <img src={upR} />
+          </span>
+        </Link>
       </div>
     </div>
   );

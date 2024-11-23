@@ -10,6 +10,13 @@ dotenv.config();
 
 const app = express();
 
+// Middleware to set COOP and COEP headers
+app.use((req, res, next) => {
+    res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+    res.setHeader("Cross-Origin-Embedder-Policy", "unsafe-none");
+    next();
+});
+
 app.use(cors({
     origin: [
         'http://localhost:5173',
