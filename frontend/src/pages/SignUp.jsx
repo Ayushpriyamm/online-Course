@@ -298,7 +298,7 @@ function SignUp() {
               />
             </div>
           </div>
-        </form>
+        
 
         <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-auto self-stretch order-2">
           <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
@@ -308,7 +308,7 @@ function SignUp() {
           <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
         </div>
 
-        <GoogleAuth />
+        <GoogleAuth className="order-4" text={"Sign up with Google"} />
         <Link
           to="/login"
           className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch order-3 mt-2 sm:mt-0 text-[#4C4C4D]"
@@ -322,6 +322,7 @@ function SignUp() {
             <img src={upR} />
           </span>
         </Link>
+        </form>
       </div>
     </div>
   );

@@ -9,13 +9,13 @@ function PricingCard({isFree,priceType}) {
 
       isFree ? (
       <>
-        <div className="flex flex-col p-5 custom:p-10 items-stretch self-stretch flex-grow rounded-lg border border-solid border-[#F1F1F3] bg-[#F6F6F8]">
+        <div className="flex flex-col p-5 custom:p-5 max-lg:p-10 items-stretch self-stretch flex-grow rounded-lg border border-solid border-[#F1F1F3] bg-[#F6F6F8]">
           <div className="w-full border border-orange-500 bg-orange-100 p-2 text-center my-2 rounded-md font-medium">Free Plan</div>
           <div className="flex w-full items-end justify-center my-9">
             <h1 className="text-6xl font-bold">₹{price}</h1>
             <p className="text-sm font-semibold text-[#59595A]">{priceType==="monthly" ? "/month":"/year"}</p>
           </div>
-          <div className="flex flex-col bg-white rounded-t-lg w-full py-4 px-10">
+          <div className="flex flex-col bg-white rounded-t-lg w-full py-4  px-5 sm:px-10 custom:px-2 max-lg:px-10">
             <div className="flex flex-col p-2 items-center w-full gap-3">
               <h2 className="text-lg font-medium mb-3">Available Features</h2>
               <div className="flex w-full items-center justify-start gap-3 border border-solid border-[#F1F1F3] p-2 rounded-md">
@@ -54,13 +54,13 @@ function PricingCard({isFree,priceType}) {
         </div>
       </>
       ):(<>
-        <div className="flex flex-col p-5 custom:p-10 items-stretch self-stretch flex-grow rounded-lg border border-solid border-[#F1F1F3] bg-[#F6F6F8]">
+        <div className="flex flex-col  p-5 custom:p-5 max-lg:p-10 items-stretch self-stretch flex-grow rounded-lg border border-solid border-[#F1F1F3] bg-[#F6F6F8]">
           <div className="w-full border border-orange-500 bg-orange-100 p-2 text-center my-2 font-medium rounded-md">Pro Plan</div>
           <div className="flex w-full items-end justify-center my-9">
             <h1 className="text-6xl font-bold">₹{price}</h1>
             <p className="text-sm font-semibold text-[#59595A]">{priceType==="monthly" ? "/month":"/year"}</p>
           </div>
-          <div className="flex flex-col bg-white rounded-t-lg w-full py-4 px-10 ">
+          <div className="flex flex-col bg-white rounded-t-lg w-full py-4 px-5 sm:px-10 custom:px-2 max-lg:px-10 ">
             <div className="flex flex-col p-2 items-center w-full gap-3">
               <h2 className="text-lg font-medium mb-3">Available Features</h2>
               <div className="flex w-full items-center justify-start gap-3 border border-solid border-[#F1F1F3] p-2 rounded-md">

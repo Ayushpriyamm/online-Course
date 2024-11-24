@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { signInFailure, signInSuccess } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
-export const GoogleAuth = () => {
+export const GoogleAuth = ({text}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleClick = async () => {
@@ -55,7 +55,7 @@ export const GoogleAuth = () => {
         className="w-full sm:h-[49px] mx-auto flex justify-center items-center gap-4 rounded-lg bg-[#F1F1F3] cursor-pointer hover:shadow-md active:scale-95 transition-all ease-in-out duration-200 py-3 order-2"
       >
         <img src={ggl} />
-        <span>Sign Up with Google</span>
+        <span>{text}</span>
       </button>
     </>
   );

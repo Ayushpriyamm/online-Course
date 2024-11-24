@@ -190,7 +190,7 @@ function Login() {
 
       {/*LOGIN PAGE*/}
       <div className="w-full min-w-[21.95rem] max-w-[65%] mx-auto custom:w-[25rem] max-lg:w-[540px] flex order-0 custom:order-1 flex-col flex-none h-[687px] self-stretch items-start p-6 sm:p-10 gap-9 sm:h-[710px] bg-white rounded-[10px] space-y-2">
-        <div className="flex flex-col justify-center items-center w-full h-[79px] self-stretch sm:h-[76px] gap-2">
+        <div className="flex flex-col justify-evenly items-center w-full h-[79px] self-stretch sm:h-[76px] gap-2">
           <h1 className="w-inherit h-[35px] sm:h-[48px] font-bold text-[28px] leading-[35px] sm:text-[38px] sm:leading-[48.07px] text-center self-stretch flex-grow-0 order-0">
             Login
           </h1>
@@ -240,7 +240,7 @@ function Login() {
                   onClick={handleSee}
                 />
               </div>
-              <p className="text-[#4C4C4D] w-inherit sm:h-[24px] text-right font-normal text-[14px] sm:text-[16px] leading-[150%] self-stretch">
+              <p className="text-[#4C4C4D] w-inherit sm:h-[24px] text-right font-normal text-[14px] sm:text-[16px] leading-[150%] self-stretch hover:cursor-pointer hover:underline hover:font-medium">
                 Forgot Password?
               </p>
             </div>
@@ -259,7 +259,7 @@ function Login() {
               <Button loading={loading} text={"Login"} type="submit" orange />
             </div>
           </div>
-        </form>
+        
         <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-[21px] self-stretch">
           <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
           <span className="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
@@ -268,11 +268,11 @@ function Login() {
 
           <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
         </div>
-        <GoogleAuth />
+        <GoogleAuth  className="order-4" text="Login with Google"/>
 
         <Link
           to="/signup"
-          className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch text-[#4C4C4D]"
+          className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch text-[#4C4C4D] order-5"
         >
           Don't have an account ?{" "}
           <span className="underline font-medium text-[#262626]">
@@ -283,7 +283,9 @@ function Login() {
             <img src={upR} />
           </span>
         </Link>
+        </form>
       </div>
+      
     </div>
   );
 }
