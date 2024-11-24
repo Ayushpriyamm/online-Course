@@ -26,6 +26,7 @@ import h3 from "../assests/thumbnails/3.svg";
 import h4 from "../assests/thumbnails/4.svg";
 import h5 from "../assests/thumbnails/5.svg";
 import h6 from "../assests/thumbnails/6.svg";
+import pr from "../assests/thumbnails/profile.png";
 
 export {
   fbIm,
@@ -55,5 +56,6 @@ export {
   h3,
   h4,
   h5,
-  h6
+  h6,
+  pr
 };
