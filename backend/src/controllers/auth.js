@@ -86,7 +86,7 @@ export const signin = async(req, res) => {
         })
     }
         
-        const token = generateToken(user._id);
+        const token = generateToken(user._id);        
 
         res.cookie("authToken", token, {
             httpOnly: true,

@@ -4,6 +4,7 @@ import cors from 'cors'
 import { dbConfig } from './config/dbConfig.js';
 
 import authRoute from './src/routes/authRoute.js'
+import userRoute from './src/routes/userRoute.js'
 
 
 dotenv.config();
@@ -33,6 +34,7 @@ dbConfig();
 
 //define Routes
 app.use('/api/v1/auth', authRoute);
+app.use('/api/v1/user',userRoute)
 
 
 const PORT=process.env.PORT || 3000

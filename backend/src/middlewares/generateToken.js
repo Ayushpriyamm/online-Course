@@ -1,9 +1,10 @@
 import jwt from 'jsonwebtoken'
 
-export const generateToken = (req,res ,userId) => {
-    try {
-        const payload = { userId };
+export const generateToken = (userId) => {
 
+    try {
+        const payload = { id: userId };
+        
         const token = jwt.sign(payload, process.env.JWT_SCERET, { expiresIn: '1d' });
 
         return token
