@@ -1,17 +1,77 @@
+import { pr } from "../assests";
 
-import { pr } from '../assests';
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  signoutStart,
+  signoutSuccess,
+  signoutFailure,
+} from "../redux/user/userSlice";
+
 const Profile = ({ user }) => {
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
 
-  const handleLogout = () => {
+  const navigate = useNavigate();
 
-    console.log("Logging out...");
+  const userName =
+    currentUser?.user?.name ||
+    currentUser?.newUser?.name ||
+    currentUser?.existingUser.name ||
+    "Guest";
+
+  const userAvatar =
+    currentUser?.user?.avatar ||
+    currentUser?.newUser?.avatar ||
+    currentUser?.existingUser.avatar ||
+    "default-avatar-url";
+
+  const userEmail =
+    currentUser?.user?.email ||
+    currentUser?.newUser?.email ||
+    currentUser?.existingUser.email ||
+    "default-avatar-url";
+
+  const memberSince =
+    currentUser?.user?.createdAt ||
+    currentUser?.newUser?.createdAt ||
+    currentUser?.existingUser.createdAt ||
+    Date.now;
+
+  const handleSignOut = async () => {
+    try {
+      dispatch(signoutStart());
+
+      const res = await fetch("http://localhost:8000/api/v1/auth/signout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // Ensure cookies are sent
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (!data || !res.ok || !data.success) {
+        dispatch(signoutFailure(data?.message || "Failed to sign out"));
+        return;
+      }
+
+      dispatch(signoutSuccess());
+      navigate("/");
+    } catch (error) {
+      console.error("Signout error:", error);
+      dispatch(
+        signoutFailure(error.message || "An error occurred during signout")
+      );
+    }
   };
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
@@ -21,24 +81,24 @@ const Profile = ({ user }) => {
         <div className="relative h-32 bg-gradient-to-br from-orange-500 to-orange-100">
           <div className="absolute -bottom-16 left-8">
             <img
-              src={pr}
+              src={userAvatar}
               alt="Profile"
               className="w-32 h-32 rounded-full border-4 border-white object-cover"
             />
           </div>
         </div>
-        
+
         <div className="pt-20 px-8 pb-8">
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">{user?.name}</h1>
-              <p className="text-gray-600">{user?.email}</p>
+              <h1 className="text-2xl font-bold text-gray-900">{userName}</h1>
+              <p className="text-gray-600">{userEmail}</p>
               <p className="text-sm text-gray-500 mt-1">
-                Member since {formatDate(user?.createdAt)}
+                Member since {formatDate(memberSince)}
               </p>
             </div>
             <button
-              onClick={handleLogout}
+              onClick={handleSignOut}
               className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
             >
               Logout
@@ -51,7 +111,10 @@ const Profile = ({ user }) => {
               {user?.enrolledCourse?.length > 0 ? (
                 <ul className="space-y-3">
                   {user.enrolledCourse.map((course, index) => (
-                    <li key={index} className="flex justify-between items-center">
+                    <li
+                      key={index}
+                      className="flex justify-between items-center"
+                    >
                       <span>{course.title}</span>
                       <div className="w-32">
                         <div className="h-2 bg-gray-200 rounded-full">
@@ -89,7 +152,9 @@ const Profile = ({ user }) => {
           </div>
 
           <div className="mt-8">
-            <h2 className="text-lg font-semibold mb-4">Course Progress Overview</h2>
+            <h2 className="text-lg font-semibold mb-4">
+              Course Progress Overview
+            </h2>
             <div className="bg-gray-50 p-6 rounded-lg">
               {user?.enrolledCourse?.length > 0 ? (
                 <div className="space-y-4">
@@ -97,9 +162,12 @@ const Profile = ({ user }) => {
                     <span>Overall Progress</span>
                     <span>
                       {Math.round(
-                        user.enrolledCourse.reduce((acc, course) => acc + (course.progress || 0), 0) /
-                          user.enrolledCourse.length
-                      )}%
+                        user.enrolledCourse.reduce(
+                          (acc, course) => acc + (course.progress || 0),
+                          0
+                        ) / user.enrolledCourse.length
+                      )}
+                      %
                     </span>
                   </div>
                   <div className="h-2 bg-gray-200 rounded-full">
@@ -107,15 +175,19 @@ const Profile = ({ user }) => {
                       className="h-2 bg-orange-500 rounded-full"
                       style={{
                         width: `${Math.round(
-                          user.enrolledCourse.reduce((acc, course) => acc + (course.progress || 0), 0) /
-                            user.enrolledCourse.length
+                          user.enrolledCourse.reduce(
+                            (acc, course) => acc + (course.progress || 0),
+                            0
+                          ) / user.enrolledCourse.length
                         )}%`,
                       }}
                     ></div>
                   </div>
                 </div>
               ) : (
-                <p className="text-gray-500">Enroll in courses to track your progress</p>
+                <p className="text-gray-500">
+                  Enroll in courses to track your progress
+                </p>
               )}
             </div>
           </div>
@@ -126,4 +198,3 @@ const Profile = ({ user }) => {
 };
 
 export default Profile;
-

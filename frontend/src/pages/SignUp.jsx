@@ -298,7 +298,7 @@ function SignUp() {
               />
             </div>
           </div>
-        
+        </form>
 
         <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-auto self-stretch order-2">
           <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
@@ -322,7 +322,6 @@ function SignUp() {
             <img src={upR} />
           </span>
         </Link>
-        </form>
       </div>
     </div>
   );
