@@ -26,6 +26,8 @@ const Profile = ({ user }) => {
 
   const memberSince = currentUser?.user?.createdAt || Date.now;
 
+  const enrolledCourse = currentUser?.user?.enrolledCourse;
+
   const handleSignOut = async () => {
     try {
       dispatch(signoutStart());
@@ -96,7 +98,7 @@ const Profile = ({ user }) => {
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-gray-50 p-6 rounded-lg">
               <h2 className="text-lg font-semibold mb-4">Enrolled Courses</h2>
-              {user?.enrolledCourse?.length > 0 ? (
+              {enrolledCourse.length > 0 ? (
                 <ul className="space-y-3">
                   {user.enrolledCourse.map((course, index) => (
                     <li
@@ -125,15 +127,15 @@ const Profile = ({ user }) => {
               <div className="space-y-3">
                 <div>
                   <label className="text-sm text-gray-500">Role</label>
-                  <p className="capitalize">{user?.role}</p>
+                  <p className="capitalize">{currentUser?.user?.role}</p>
                 </div>
                 <div>
                   <label className="text-sm text-gray-500">Account ID</label>
-                  <p className="font-mono text-sm">{user?._id}</p>
+                  <p className="font-mono text-sm">{currentUser?.user?._id}</p>
                 </div>
                 <div>
                   <label className="text-sm text-gray-500">Last Updated</label>
-                  <p>{formatDate(user?.updatedAt)}</p>
+                  <p>{formatDate(currentUser?.user?.updatedAt)}</p>
                 </div>
               </div>
             </div>
