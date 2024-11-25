@@ -34,7 +34,6 @@ function Home() {
   return (
     <>
       {/*Hero Section*/}
-
       <div className=" flex flex-col items-center my-[100px] mx-auto w-[357px] h-[311px] gap-[50px] custom:max-w-[941px] sm:h-[265px] sm:max-w-[85%]">
         <div className="relative w-[357px] h-[212px] sm:h-[166px] sm:w-[941px] gap-[16px] flex flex-col">
           <img

@@ -26,6 +26,15 @@ import h3 from "../assests/thumbnails/3.svg";
 import h4 from "../assests/thumbnails/4.svg";
 import h5 from "../assests/thumbnails/5.svg";
 import h6 from "../assests/thumbnails/6.svg";
+import h7 from "../assests/thumbnails/7.svg";
+import h8 from "../assests/thumbnails/8.svg";
+import h9 from "../assests/thumbnails/9.svg";
+import h10 from "../assests/thumbnails/10.svg";
+import h11 from "../assests/thumbnails/11.svg";
+import h12 from "../assests/thumbnails/12.svg";
+import h13 from "../assests/thumbnails/13.svg";
+import h14 from "../assests/thumbnails/14.svg";
+import h15 from "../assests/thumbnails/15.svg";
 import pr from "../assests/thumbnails/profile.png";
 
 export {
@@ -57,5 +66,14 @@ export {
   h4,
   h5,
   h6,
+  h7,
+  h8,
+  h9,
+  h10,
+  h11,
+  h12,
+  h13,
+  h14,
+  h15,
   pr
 };

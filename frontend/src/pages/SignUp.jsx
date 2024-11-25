@@ -121,11 +121,10 @@ function SignUp() {
 
   return (
     <div
-      className=" flex flex-col mx-auto mt-0 custom:mt-[4rem] mb-[100px] items-center custom:items-center justify-center custom:justify-evenly gap-12 sm:gap-y-7
-    custom:gap-8 max-lg:gap-16 w-[85%] h-[1380px] sm:w-[95%] custom:w-[90%] custom:h-[846px] custom:flex-row "
+      className=" flex flex-col mx-auto mt-0 custom:mt-9 mb-[100px] items-center custom:items-center justify-center gap-12 custom:justify-evenly sm:gap-y-7 custom:gap-8 max-lg:gap-16 w-[85%] h-[1380px] sm:w-[95%] custom:w-[90%] custom:h-[846px] custom:flex-row"
     >
       {/*TESTIMONIALS PAGE*/}
-      <div className="w-full sm:max-w-[60%] custom:w-[32rem] max-lg:w-[649px] flex flex-col order-1 custom:order-0 mx-auto self-stretch items-end gap-y-[40px] w-inherit h-[510px] sm:gap-y-[60px] sm:my-auto  sm:h-[509px]">
+      <div className="w-full sm:max-w-[60%] custom:w-[32rem] max-lg:w-[649px] flex flex-col order-1 custom:order-0 mx-auto self-stretch items-end gap-y-[40px] w-inherit h-[510px] sm:gap-y-[60px] sm:my-24  sm:h-[509px]">
         <div className="flex flex-col items-center flex-none order-0 self-stretch flex-grow-0 w-inherit h-[155px] sm:h-[121px] p-0 gap-2 mb-6 max-lg:mb-0">
           <h1 className="w-inherit h-[45px] flex-none order-0 self-stretch flex-grow-0 font-bold  text-[28px] sm:text-[30px] leading-[150%] ">
             Students Testimonials
@@ -211,11 +210,11 @@ function SignUp() {
           {error && <p className="text-red-500">{error}</p>}
         </div>
 
-        <form
-          onSubmit={handleSubmit}
+        <div
+          
           className="flex flex-col gap-6 items-start w-inherit h-[550px] sm:h-[620px] self-stretch order-1"
         >
-          <div className="flex flex-col items-start gap-5 w-inherit h-[447px] sm:h-[537px] self-stretch order-0">
+          <form onSubmit={handleSubmit} className="flex flex-col items-start gap-5 w-inherit h-[447px] sm:h-auto self-stretch order-0">
             <div className="flex flex-col items-start gap-[10px] w-inherit h-[92px] sm:h-[98px] self-stretch order-0">
               <label htmlFor="name" className="font-semibold">
                 Full Name
@@ -297,8 +296,8 @@ function SignUp() {
                 disabled={isFormComplete}
               />
             </div>
-          </div>
         </form>
+          
 
         <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-auto self-stretch order-2">
           <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
@@ -322,6 +321,7 @@ function SignUp() {
             <img src={upR} />
           </span>
         </Link>
+        </div>
       </div>
     </div>
   );

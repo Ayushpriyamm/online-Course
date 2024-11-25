@@ -199,11 +199,11 @@ function Login() {
           </p>
           {error && <p className="text-red-500">{error}</p>}
         </div>
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-6 items-start w-inherit h-[518px] sm:h-[536px] self-stretch"
-        >
-          <div className="flex flex-col items-start gap-[20px] w-inherit h-[348px] sm:h-[363px] self-stretch">
+        <div className="flex flex-col gap-6 items-start w-inherit h-[518px] sm:h-[536px] self-stretch">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col items-start gap-[20px] w-inherit h-[348px] sm:h-[363px] self-stretch"
+          >
             <div className="flex flex-col items-start gap-[10px] w-inherit h-[92px] sm:h-[98px] self-stretch">
               <label htmlFor="email" className="font-semibold">
                 Email
@@ -258,32 +258,32 @@ function Login() {
             <div className=" self-stretch w-full sm:h-[49px]">
               <Button loading={loading} text={"Login"} type="submit" orange />
             </div>
+          </form>
+
+          <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-[21px] self-stretch">
+            <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
+            <span className="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
+              OR
+            </span>
+
+            <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
           </div>
-        </form>
+          <GoogleAuth className="order-4" text="Login with Google" />
 
-        <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-[21px] self-stretch">
-          <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
-          <span className="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
-            OR
-          </span>
-
-          <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
+          <Link
+            to="/signup"
+            className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch text-[#4C4C4D] order-5"
+          >
+            Don't have an account ?{" "}
+            <span className="underline font-medium text-[#262626]">
+              {" "}
+              Sign Up{" "}
+            </span>
+            <span>
+              <img src={upR} />
+            </span>
+          </Link>
         </div>
-        <GoogleAuth className="order-4" text="Login with Google" />
-
-        <Link
-          to="/signup"
-          className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch text-[#4C4C4D] order-5"
-        >
-          Don't have an account ?{" "}
-          <span className="underline font-medium text-[#262626]">
-            {" "}
-            Sign Up{" "}
-          </span>
-          <span>
-            <img src={upR} />
-          </span>
-        </Link>
       </div>
     </div>
   );
