@@ -8,8 +8,6 @@ export default function ProtectedRoute() {
 
   const location = useLocation();
 
-  console.log(location);
-
   return currentUser ? (
     <Outlet />
   ) : (

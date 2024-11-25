@@ -20,23 +20,11 @@ const Profile = ({ user }) => {
     currentUser?.existingUser.name ||
     "Guest";
 
-  const userAvatar =
-    currentUser?.user?.avatar ||
-    currentUser?.newUser?.avatar ||
-    currentUser?.existingUser.avatar ||
-    "default-avatar-url";
+  const userAvatar = currentUser?.user?.avatar || "default-avatar-url";
 
-  const userEmail =
-    currentUser?.user?.email ||
-    currentUser?.newUser?.email ||
-    currentUser?.existingUser.email ||
-    "default-avatar-url";
+  const userEmail = currentUser?.user?.email || "default-avatar-url";
 
-  const memberSince =
-    currentUser?.user?.createdAt ||
-    currentUser?.newUser?.createdAt ||
-    currentUser?.existingUser.createdAt ||
-    Date.now;
+  const memberSince = currentUser?.user?.createdAt || Date.now;
 
   const handleSignOut = async () => {
     try {

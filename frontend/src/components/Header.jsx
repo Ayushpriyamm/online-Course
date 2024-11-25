@@ -14,16 +14,8 @@ function Header() {
   const { currentUser } = useSelector((state) => state.user);
   const [isOpen, setIsOpen] = useState(false);
 
-  const userName =
-    currentUser?.user?.name ||
-    currentUser?.newUser?.name ||
-    currentUser?.existingUser.name ||
-    "Guest";
-  const userAvatar =
-    currentUser?.user?.avatar ||
-    currentUser?.newUser?.avatar ||
-    currentUser?.existingUser.avatar ||
-    "default-avatar-url";
+  const userName = currentUser?.user?.name || "Guest";
+  const userAvatar = currentUser?.user?.avatar || "default-avatar-url";
 
   const handleDropDown = () => {
     setIsOpen(!isOpen);

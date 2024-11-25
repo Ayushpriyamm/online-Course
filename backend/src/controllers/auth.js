@@ -44,7 +44,7 @@ export const signup = async(req,res) => {
             success:true,
             message:"Signup sucesssfull✅   ",
             token,
-            newUser,
+            user:newUser,
            
         })
 
@@ -99,7 +99,7 @@ export const signin = async(req, res) => {
             success:true,
             token,
             message: "signin successfull",
-            user,
+            user:user,
         })
     } catch (error) {
         console.error("something went wrong ❌" ,error)
@@ -151,7 +151,7 @@ export const google = async (req, res) => {
                 success:true,
                 token,
                 message: "signin successfull",
-                existingUser,
+                user:existingUser,
             })
         } else {
             const generatePassword = Math.random().toString(36).slice(-8) + Math.random().toString(36).slice(-8);
