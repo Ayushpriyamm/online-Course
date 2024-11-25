@@ -9,61 +9,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { useSelector, useDispatch } from "react-redux";
-import {
-  signoutFailure,
-  signoutStart,
-  signoutSuccess,
-} from "../redux/user/userSlice";
 
 function Header() {
   const { currentUser } = useSelector((state) => state.user);
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
 
-  const dispatch = useDispatch();
-
-  const userName =
-    currentUser?.user?.name ||
-    currentUser?.newUser?.name ||
-    currentUser?.existingUser.name ||
-    "Guest";
-  const userAvatar =
-    currentUser?.user?.avatar ||
-    currentUser?.newUser?.avatar ||
-    currentUser?.existingUser.avatar ||
-    "default-avatar-url";
+  const userName = currentUser?.user?.name || "Guest";
+  const userAvatar = currentUser?.user?.avatar || "default-avatar-url";
 
   const handleDropDown = () => {
     setIsOpen(!isOpen);
-  };
-
-  const handleSignOut = async () => {
-    try {
-      dispatch(signoutStart());
-
-      const res = await fetch("http://localhost:8000/api/v1/auth/signout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include", // Ensure cookies are sent
-      });
-
-      const data = await res.json().catch(() => null);
-
-      if (!data || !res.ok || !data.success) {
-        dispatch(signoutFailure(data?.message || "Failed to sign out"));
-        return;
-      }
-
-      dispatch(signoutSuccess());
-      navigate("/");
-    } catch (error) {
-      console.error("Signout error:", error);
-      dispatch(
-        signoutFailure(error.message || "An error occurred during signout")
-      );
-    }
   };
 
   return (
@@ -150,14 +105,6 @@ function Header() {
                   alt="profile"
                 />
               </Link>
-              <span
-                className="p-1 cursor-pointer"
-                onClick={() => {
-                  handleSignOut();
-                }}
-              >
-                <FontAwesomeIcon icon={faArrowRightFromBracket} size="2x" />
-              </span>
             </>
           ) : (
             <>
