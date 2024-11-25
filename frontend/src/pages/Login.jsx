@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import { eye, eyeN, ggl, left, right, upR } from "../assests";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
   signInStart,
   signInSuccess,
@@ -17,6 +17,8 @@ function Login() {
 
   const dispatch = useDispatch();
   const { error, loading } = useSelector((state) => state.user);
+
+  const location = useLocation();
 
   const navigate = useNavigate();
 
@@ -51,7 +53,9 @@ function Login() {
       }
 
       dispatch(signInSuccess(data));
-      navigate("/courses", { replace: true });
+      const redirecting =
+        location.state?.desiredLocation?.pathname || "/courses";
+      navigate(redirecting, { replace: true });
     } catch (error) {
       dispatch(signInFailure(error.message));
     }

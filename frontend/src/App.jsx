@@ -15,6 +15,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import Course from "./pages/Course";
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -27,7 +28,9 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
-        <Route path="profile" element={<Profile />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="profile" element={<Profile />} />
+        </Route>
       </Route>
     )
   );
