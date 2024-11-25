@@ -142,7 +142,7 @@ function Header() {
         <div className="flex items-center mr-3 gap-x-4">
           {currentUser ? (
             <>
-              <Link to="/" className="flex items-center gap-2">
+              <Link to="/profile" className="flex items-center gap-2">
                 <p>Hi, {userName}</p>
                 <img
                   className="rounded-full h-10 w-10 object-cover"
