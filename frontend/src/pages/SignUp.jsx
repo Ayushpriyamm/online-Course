@@ -11,6 +11,7 @@ import {
 } from "../redux/user/userSlice";
 
 import { useDispatch, useSelector } from "react-redux";
+import API_BASE_URL from "../config/apiConfig";
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function SignUp() {
     e.preventDefault();
     dispatch(signInStart());
     try {
-      const res = await fetch("http://localhost:8000/api/v1/auth/signup", {
+      const res = await fetch(`${API_BASE_URL}/v1/auth/signup`, {
         method: "POST",
         headers: {
           "content-Type": "application/json",
@@ -120,9 +121,7 @@ function SignUp() {
   };
 
   return (
-    <div
-      className=" flex flex-col mx-auto mt-0 custom:mt-9 mb-[100px] items-center custom:items-center justify-center gap-12 custom:justify-evenly sm:gap-y-7 custom:gap-8 max-lg:gap-16 w-[85%] h-[1380px] sm:w-[95%] custom:w-[90%] custom:h-[846px] custom:flex-row"
-    >
+    <div className=" flex flex-col mx-auto mt-0 custom:mt-9 mb-[100px] items-center custom:items-center justify-center gap-12 custom:justify-evenly sm:gap-y-7 custom:gap-8 max-lg:gap-16 w-[85%] h-[1380px] sm:w-[95%] custom:w-[90%] custom:h-[846px] custom:flex-row">
       {/*TESTIMONIALS PAGE*/}
       <div className="w-full sm:max-w-[60%] custom:w-[32rem] max-lg:w-[649px] flex flex-col order-1 custom:order-0 mx-auto self-stretch items-end gap-y-[40px] w-inherit h-[510px] sm:gap-y-[60px] sm:my-24  sm:h-[509px]">
         <div className="flex flex-col items-center flex-none order-0 self-stretch flex-grow-0 w-inherit h-[155px] sm:h-[121px] p-0 gap-2 mb-6 max-lg:mb-0">
@@ -210,11 +209,11 @@ function SignUp() {
           {error && <p className="text-red-500">{error}</p>}
         </div>
 
-        <div
-          
-          className="flex flex-col gap-6 items-start w-inherit h-[550px] sm:h-[620px] self-stretch order-1"
-        >
-          <form onSubmit={handleSubmit} className="flex flex-col items-start gap-5 w-inherit h-[447px] sm:h-auto self-stretch order-0">
+        <div className="flex flex-col gap-6 items-start w-inherit h-[550px] sm:h-[620px] self-stretch order-1">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col items-start gap-5 w-inherit h-[447px] sm:h-auto self-stretch order-0"
+          >
             <div className="flex flex-col items-start gap-[10px] w-inherit h-[92px] sm:h-[98px] self-stretch order-0">
               <label htmlFor="name" className="font-semibold">
                 Full Name
@@ -296,31 +295,30 @@ function SignUp() {
                 disabled={isFormComplete}
               />
             </div>
-        </form>
-          
+          </form>
 
-        <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-auto self-stretch order-2">
-          <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
-          <span className="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
-            OR
-          </span>
-          <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
-        </div>
+          <div className="flex flex-row justify-center items-center p-0 gap-3 w-inherit h-auto self-stretch order-2">
+            <div className="flex-none order-0 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
+            <span className="flex-none order-1 w-[20px] h-[21px] font-normal text-[14px] leading-[150%] flex items-center text-center text-[#98989A] flex-grow-0">
+              OR
+            </span>
+            <div className="flex-none order-2 w-[126.5px] sm:w-inherit h-0 border border-[#E4E4E7] flex-grow"></div>
+          </div>
 
-        <GoogleAuth className="order-4" text={"Sign up with Google"} />
-        <Link
-          to="/login"
-          className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch order-3 mt-2 sm:mt-0 text-[#4C4C4D]"
-        >
-          Already have an account ?{" "}
-          <span className="underline font-semibold text-[#262626]">
-            {" "}
-            Login{" "}
-          </span>
-          <span>
-            <img src={upR} />
-          </span>
-        </Link>
+          <GoogleAuth className="order-4" text={"Sign up with Google"} />
+          <Link
+            to="/login"
+            className="flex flex-row justify-center items-center p-0 gap-[6px] w-inherit h-[21px] sm:h-[24px] text-center text-base sm:text-lg leading-[150%] self-stretch order-3 mt-2 sm:mt-0 text-[#4C4C4D]"
+          >
+            Already have an account ?{" "}
+            <span className="underline font-semibold text-[#262626]">
+              {" "}
+              Login{" "}
+            </span>
+            <span>
+              <img src={upR} />
+            </span>
+          </Link>
         </div>
       </div>
     </div>

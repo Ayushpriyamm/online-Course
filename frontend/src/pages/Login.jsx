@@ -11,6 +11,7 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { GoogleAuth } from "../components/GoogleAuth";
+import API_BASE_URL from "../config/apiConfig";
 
 function Login() {
   const [formData, setFormData] = useState({});
@@ -36,17 +37,14 @@ function Login() {
     try {
       dispatch(signInStart());
 
-      const res = await fetch(
-        "https://online-course-0032.onrender.com/api/v1/auth/signin",
-        {
-          method: "POST",
-          headers: {
-            "content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify(formData),
-        }
-      );
+      const res = await fetch(`${API_BASE_URL}/v1/auth/signin`, {
+        method: "POST",
+        headers: {
+          "content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(formData),
+      });
 
       const data = await res.json();
 

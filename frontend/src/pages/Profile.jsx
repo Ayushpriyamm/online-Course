@@ -1,4 +1,5 @@
 import { pr } from "../assests";
+import API_BASE_URL from "../config/apiConfig";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -32,7 +33,7 @@ const Profile = ({ user }) => {
     try {
       dispatch(signoutStart());
 
-      const res = await fetch("http://localhost:8000/api/v1/auth/signout", {
+      const res = await fetch(`${API_BASE_URL}/v1/auth/signout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
