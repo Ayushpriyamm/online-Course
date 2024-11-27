@@ -1,4 +1,4 @@
-import { faArrowRight, faPlus, faX } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faPlus} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
