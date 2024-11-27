@@ -83,9 +83,7 @@ function FAQ() {
                 onClick={() => handleToggle(item.id)}
               >
                 {openQues[item.id] ? (
-                  <button className="px-3 py-2">
-                    <FontAwesomeIcon icon={faX} />
-                  </button>
+                  <div className="rotate-45 px-3 py-2"><FontAwesomeIcon icon={faPlus} /></div>
                 ) : (
                   <button className="px-3 py-2">
                     <FontAwesomeIcon icon={faPlus} />

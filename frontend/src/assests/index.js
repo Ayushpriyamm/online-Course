@@ -36,6 +36,11 @@ import h13 from "../assests/thumbnails/13.svg";
 import h14 from "../assests/thumbnails/14.svg";
 import h15 from "../assests/thumbnails/15.svg";
 import pr from "../assests/thumbnails/profile.png";
+import clogo from "../assests/course.svg";
+import tm from 	"../assests/time.svg";
+import mail from "../assests/mail.svg";
+import phone from "../assests/phone.svg";
+import loc from "../assests/loc.svg";
 
 export {
   fbIm,
@@ -75,5 +80,10 @@ export {
   h13,
   h14,
   h15,
-  pr
+  pr,
+  clogo,
+  tm,
+  loc,
+  mail,
+  phone
 };

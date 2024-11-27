@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      boxShadow: {
+        'equal': '0 0 20px rgba(0, 0, 0, 0.5)'
+      },
       screens:{
         'custom':'882px',
         'max-lg':'1380px',
