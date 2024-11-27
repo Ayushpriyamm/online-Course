@@ -19,13 +19,8 @@ function Courses() {
 
       <div className="w-full flex items-center justify-end gap-4 mb-8">
         <div className="relative w-full max-w-xl">
-          <input
-            type="search"
-            placeholder="Search for courses..."
-            className="w-full px-4 py-3 rounded-lg border border-[#E4E4E7] focus:outline-none focus:border-[#FF6B00] focus:ring-1 focus:ring-[#FF6B00] transition-colors placeholder:text-[#59595A]"
-          />
           <svg
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#59595A]"
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#59595A]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -37,8 +32,13 @@ function Courses() {
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
           </svg>
+          <input
+            type="search"
+            placeholder="Search for courses..."
+            className="w-full flex flex-row px-10  p-4 items-center border border-solid border-[#F1F1F3] rounded-lg bg-[#FCFCFD] text-[#656567] focus:outline-orange-200 focus:bg-orange-100 focus:text-black self-stretch placeholder:text-[#59595A] placeholder:absolute placeholder:left-10"
+          />
         </div>
-        <button className="hover:bg-orange-400 active:bg-[#E5E5E5] active:text-[#262626] active:scale-95 transition-all ease-in-out duration-200 text-white bg-orange-500 px-4 py-3 rounded-lg">
+        <button className="hover:bg-orange-400 active:bg-[#E5E5E5] active:text-[#262626] active:scale-95 transition-all ease-in-out duration-200 text-white bg-orange-500 p-4 rounded-lg">
           Search
         </button>
       </div>
