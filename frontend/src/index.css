@@ -4,11 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+html{
+    scroll-behavior: smooth;
+}
 
 #root{
     font-family: 'Be Vietnam Pro', sans-serif;
     background-color: #f6f6f8;
-
+    scroll-behavior: smooth;
     /* h2{
         font-size: clamp(1.125rem, 1.081rem + 0.1408vw, 1.25rem);
     } */

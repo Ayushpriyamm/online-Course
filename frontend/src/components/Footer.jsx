@@ -1,5 +1,3 @@
-import React from "react";
-import Header from "./Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
@@ -19,8 +17,9 @@ function Footer() {
         <div className="flex flex-col sm:flex-row bg-white px-10 py-5 sm:justify-around gap-5 sm:gap-2 ">
           <div className=" pt-6">
             <div className="mb-5">
-              <Link to="/">
+              <Link to="/" className="flex items-center gap-2">
                 <img src={logo} alt="logo" />
+                <span className="font-bold text-2xl bg-gradient-to-r from-orange-500 to-orange-700 text-transparent bg-clip-text">Aca<span >Dify</span></span>
               </Link>
             </div>
             <div className="flex flex-col gap-y-3 text-lg text-gray-700">
@@ -38,7 +37,7 @@ function Footer() {
           <div className="pt-6 ">
             <h2 className="font-bold text-xl pb-3 text-gray-800 cursor-pointer" onClick={scrollToTop}>Home</h2>
             <ul className="list-none space-y-2 text-lg text-gray-600">
-              <Link to="benefits"><li className="hover:text-gray-800 cursor-pointer">Benefits</li></Link>
+              <li className="hover:text-gray-800 cursor-pointer">Benefits</li>
               <li className="hover:text-gray-800 cursor-pointer">
                 Our Courses
               </li>
@@ -53,7 +52,7 @@ function Footer() {
             <Link to="/about">
             <h2 className="font-bold text-xl pb-3 text-gray-800">About Us</h2></Link>
             <ul className="list-none space-y-2 text-lg text-gray-600">
-              <li className="hover:text-gray-800 cursor-pointer">Company</li>
+              <li className="hover:text-gray-800 cursor-pointer">Pricing</li>
               <li className="hover:text-gray-800 cursor-pointer">
                 Achievements
               </li>

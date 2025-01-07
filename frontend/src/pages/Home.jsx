@@ -17,7 +17,7 @@ import {
   zoom,
 } from "../assests";
 import Button from "../components/Button";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 import Benefits from "../components/Benefits";
 import CourseHome from "../components/cards/CourseHome";
@@ -26,12 +26,10 @@ import TestimonialCard from "../components/cards/TestimonialCard";
 
 import PricingCard from "../components/cards/PricingCard";
 import FAQ from "../components/FAQ";
-
 function Home() {
   const [view, setView] = useState(true);
   const [view2, setView2] = useState(false);
   const [priceType, setPriceType] = useState("monthly");
-
   return (
     <>
       {/*Hero Section*/}
@@ -167,11 +165,15 @@ function Home() {
       </div>
 
       {/* Benefits */}
-      <Benefits />
+      <Benefits id="benefits" />
 
       {/* Courses */}
 
-      <div className="my-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto">
+      <div
+        
+        id="courses"
+        className="my-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto"
+      >
         <div
           className="flex flex-col sm:flex-row justify-end 
       items-start sm:items-end gap-8 sm:gap-16 custom:gap-32 max-lg:gap-64 w-inherit h-[128px] max-lg:h-[110px] self-stretch"
@@ -260,7 +262,11 @@ function Home() {
       </div>
 
       {/*Testimonials*/}
-      <div className="my-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto">
+      <div
+       
+        id="testimonials"
+        className="my-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto"
+      >
         <div
           className="flex flex-col sm:flex-row justify-end 
       items-start sm:items-end gap-8 sm:gap-16 custom:gap-32 max-lg:gap-64 w-inherit h-[128px] max-lg:h-[110px] self-stretch"
@@ -323,7 +329,11 @@ function Home() {
       </div>
 
       {/*Pricing*/}
-      <div className="my-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto">
+      <div
+        className="my-32 sm:mt-0 flex flex-col gap-10 sm:gap-16 items-end mx-auto w-[95%] sm:w-[90%] h-auto"
+       
+        id="pricing"
+      >
         <div
           className="flex flex-col sm:flex-row justify-end 
       items-start sm:items-end gap-8 sm:gap-16 custom:gap-32 max-lg:gap-64 w-inherit h-[128px] max-lg:h-[110px] self-stretch"
@@ -341,17 +351,18 @@ function Home() {
           </div>
           <div className="sm:w-[28rem] custom:w-[20rem] h-auto px-3 py-3 bg-white rounded-md flex gap-2 items-center justify-center mx-auto sm:mx-0">
             <div
-              className={
-                ` px-4 py-2 text-center rounded-md cursor-pointer ${
-                  priceType==="monthly" ? "bg-orange-500 text-white" :""}`}
-                  onClick={() => setPriceType("monthly")}
+              className={` px-4 py-2 text-center rounded-md cursor-pointer ${
+                priceType === "monthly" ? "bg-orange-500 text-white" : ""
+              }`}
+              onClick={() => setPriceType("monthly")}
             >
               Monthly
             </div>
             <div
-              className={
-                `px-4 py-2 text-center rounded-md cursor-pointer ${priceType==="yearly" ? "bg-orange-500 text-white" : ""}`}
-                onClick={() => setPriceType("yearly")}
+              className={`px-4 py-2 text-center rounded-md cursor-pointer ${
+                priceType === "yearly" ? "bg-orange-500 text-white" : ""
+              }`}
+              onClick={() => setPriceType("yearly")}
             >
               Yearly
             </div>
@@ -359,14 +370,14 @@ function Home() {
         </div>
 
         <div className="w-full h-auto flex flex-col custom:flex-row items-center px-10 py-10 custom:py-14 custom:px-12 max-lg:px-20 max-lg:py-16 justify-center custom:gap-12 max-lg:gap-16 gap-10 flex-grow-0 self-stretch bg-white rounded-lg">
-          <PricingCard isFree  priceType={priceType}/>
-          <PricingCard isFree={false} priceType={priceType}/>
+          <PricingCard isFree priceType={priceType} />
+          <PricingCard isFree={false} priceType={priceType} />
         </div>
       </div>
-      
+
       {/*FAQ*/}
 
-      <FAQ/>
+      <FAQ  id="faq" />
     </>
   );
 }

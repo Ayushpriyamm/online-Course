@@ -16,7 +16,7 @@ function About() {
         </p>
       </div>
       {/* Achivements */}
-      <div className="w-full flex flex-col gap-10 mb-16">
+      <div id="achivements" className="w-full flex flex-col gap-10 mb-16">
         <div className="flex flex-col gap-2 flex-grow-0 self-stretch justify-between items-start">
           <h1 className="font-semibold text-2xl flex-grow-0 self-stretch">
             Achivements
@@ -195,7 +195,7 @@ function About() {
         </div>
       </div>
       {/* Our Goals */}
-      <div className="w-full flex flex-col gap-10 mb-16">
+      <div id="our-goals" className="w-full flex flex-col gap-10 mb-16">
         <div className="flex flex-col gap-2 flex-grow-0 self-stretch justify-between">
           <h1 className="font-semibold text-2xl flex-grow-0 self-stretch">
             Our Goals

@@ -1,8 +1,8 @@
 import { faArrowRight, faPlus} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 
-function FAQ() {
+const FAQ=forwardRef((props, ref) =>{
   const [openQues, setOpenQues] = useState({});
   const [showAll, setShowAll] = useState(false);
   const handleToggle = (id) => {
@@ -52,7 +52,7 @@ function FAQ() {
   const quesVisible = showAll ? faq : faq.slice(0, 4);
 
   return (
-    <div className="mt-32 custom:mt-0 flex flex-col custom:flex-row gap-16 custom:gap-20 items-start mx-auto w-[95%] sm:w-[90%] h-auto bg-white my-10 p-6 sm:p-10 custom:p-16 max-lg:p-20">
+    <div ref={ref} id={props.id} className="mt-32 custom:mt-0 flex flex-col custom:flex-row gap-16 custom:gap-20 items-start mx-auto w-[95%] sm:w-[90%] h-auto bg-white my-10 p-6 sm:p-10 custom:p-16 max-lg:p-20">
       <div className="flex flex-col gap-10 w-full custom:w-1/2">
         <div className="flex flex-col gap-2 justify-center items-start">
           <h1 className="text-4xl font-semibold">Frequently Asked</h1>
@@ -112,5 +112,6 @@ function FAQ() {
     </div>
   );
 }
+);
 
 export default FAQ;
